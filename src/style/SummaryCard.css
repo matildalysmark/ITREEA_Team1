@@ -27,6 +27,7 @@
     font-size: 20px;
     color: black;
     padding-bottom: 10px;
+    margin-bottom: 18px;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -49,6 +50,10 @@
     gap: 8px; 
 }
 
+.individual-value {
+    font-weight: 700;
+}
+
 .bar{
     width: 28px;
     height: 90px;
@@ -59,13 +64,78 @@
     overflow: hidden;
 }
 
+.carbon-bar {
+    background-color: #D6DDD9;
+}
+
+.carbon-bar-fill {
+    background-color: #3F8D90;
+}
+
+.carbon-icon {
+    color: #3F8D90;
+}
+
+.resourcing-bar {
+    background-color: #DDE2D1;
+}
+
+.resourcing-bar-fill {
+    background-color: #307236;
+}
+
+.resourcing-icon {
+    color: #307236;
+}
+
+.labor-bar {
+    background-color: #F0D4CF;
+}
+
+.labor-bar-fill {
+    background-color: #E0433E;
+}
+
+.labor-icon {
+    color: #E0433E;
+}
+
 .bar-fill{
     width: 100%;
     border-radius: 0 0 5px 5px; 
 }
 
-.bar-rect{
-    width: 30px;
-    height: 100%;
+.overall-score {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 14px 15px 0;
+    padding-top: 10px;
+    border-top: 1px solid #e0dfdf;
+    font-family: 'Roboto', sans-serif;
+}
+
+.overall-score-label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.overall-score-value {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.overall-score-bar {
+    width: calc(100% - 30px);
+    height: 22px;
+    margin: 10px 15px 0;
     border-radius: 5px;
+    overflow: hidden;
+    background-color: #F0D4CF;
+}
+
+.overall-score-bar-fill {
+    height: 100%;
+    border-radius: 5px 0 0 5px;
+    background-color: #52422F;
 }
