@@ -2,10 +2,16 @@ import '../style/SupplierGridPage.css';
 import supplier_data from '../../data/supplier_data.json';
 import SummaryCard from '../Widgets/SummaryCard';
 import FilterButton from '../Widgets/FilterButton';
+import SortButton from '../Widgets/SortButton';
 import CustomScoreEditButton from '../components/CustomScoreEditButton'
+import { compareSuppliers } from '../helper/supplierUtils';
+import { useState } from 'react';
 
 export default function SupplierGridPage() {
-    const supplierIds = Object.keys(supplier_data.suppliers);
+    const [sortBy, setSortBy] = useState('display_name');
+    const supplierIds = Object.entries(supplier_data.suppliers)
+        .sort(compareSuppliers(sortBy))
+        .map(([supplierId]) => supplierId);
 
     return (
         <section id="home-page">
@@ -16,6 +22,7 @@ export default function SupplierGridPage() {
             <div className='top-grid-container'>
                 <div className='grid'>
                     <div className="filter-row-container">
+                        <SortButton sortBy={sortBy} onSortChange={setSortBy} />
                         <FilterButton />
                         <CustomScoreEditButton />
                     </div>
