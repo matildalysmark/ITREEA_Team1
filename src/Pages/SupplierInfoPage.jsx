@@ -9,7 +9,8 @@ import suppliers_data from '../../data/supplier_data.json'
 
 
 
-export default function SupplierInfoPage({ supplier_id }) {
+export default function SupplierInfoPage() {
+    const supplier_id = "timberco_ab";
     const data = suppliers_data.suppliers[supplier_id];
     const { axes, inputData } = jsonToChartData(suppliers_data, supplier_id, "amount");
 
@@ -41,7 +42,6 @@ export default function SupplierInfoPage({ supplier_id }) {
             </div>
             <br />
             <div>
-                <h2>Data</h2>
                 <SupplierDataTable data={data} />
             </div>
         </div>

@@ -1,0 +1,15 @@
+table {
+    border-collapse: collapse;
+    background-color: transparent;
+    margin: 1rem;
+    overflow: hidden;
+    width: calc(100% - 2rem);
+}
+
+th,
+td {
+    background-color: transparent;
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+}
