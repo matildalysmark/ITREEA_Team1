@@ -1,16 +1,29 @@
 import { SlidersHorizontal } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import '../style/CustomScoreEditButton.css';
+import { useState } from 'react';
+import CustomScoreEdit from './CustomScoreEdit'
 
 export default function CustomScoreEditButton() {
-    const navigate = useNavigate();
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
-        <button className="custom-score-edit-button" type="button" onClick={() => navigate("/app/custom_score")}>
-            
-            <p className='button-text'>
-            <SlidersHorizontal color='white'/> 
-                Score Tuning
-            </p>
-        </button>
+        <div>
+            <button
+                className="custom-score-edit-button"
+                type="button"
+                onClick={() => setIsOpen(!isOpen)}>
+
+                <p className='button-text'>
+                    <SlidersHorizontal color='white' />
+                    Score Tuning
+                </p>
+            </button>
+
+            {isOpen && (
+                <div className="custom-score-edit-menu">
+                    <CustomScoreEdit></CustomScoreEdit>
+                </div>
+            )}
+        </div>
     )
 }

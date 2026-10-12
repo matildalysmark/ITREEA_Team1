@@ -2,7 +2,8 @@ import '../style/SummaryCard.css';
 import data from '/data/supplier_data.json'
 import { Atom, TreePine, HandHeart } from 'lucide-react';
 import { useNavigate } from 'react-router-dom'
-import { getAverageScore } from "../helper/scoreUtils";
+import { useScoreTuningStore } from '../helper/store.js'
+import { getOverallScore } from "../helper/scoreUtils";
 
 export default function SummaryCard({ id }) {
     const supplier = data.suppliers[id]; // supplier id, e.g. 'abc_ab'
@@ -12,6 +13,8 @@ export default function SummaryCard({ id }) {
     if (!supplier) {
         return <div className='summary-container'>Supplier missing</div>;
     }
+
+    const {scoreTuning, _} = useScoreTuningStore()
 
     return (
         <div className='summary-container' onClick={() => navigate(`/app/suppliers/${id}`)}>
@@ -51,13 +54,13 @@ export default function SummaryCard({ id }) {
 
             <div className='overall-score'>
                 <span className='overall-score-label'>Overall score</span>
-                <span className='overall-score-value'>{getAverageScore(supplier)}</span>
+                <span className='overall-score-value'>{getOverallScore(supplier, scoreTuning)}</span>
             </div>
 
             <div className='overall-score-bar'>
                 <div
                     className='overall-score-bar-fill'
-                    style={{width: `${(getAverageScore(supplier) / 10) * 100}%`}}
+                    style={{width: `${(getOverallScore(supplier, scoreTuning) / 10) * 100}%`}}
                 ></div>
             </div>
         </div>
