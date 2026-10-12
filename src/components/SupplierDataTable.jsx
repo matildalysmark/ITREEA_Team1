@@ -1,3 +1,5 @@
+import { capitalizeFirstLetter } from "../helper/textUtils";
+
 export default function SupplierDataTable({ data }) {
     const latestMonth = Object.keys(data.months).sort().at(-1);
     const treeTypes = data.months[latestMonth].tree_types;
@@ -9,13 +11,13 @@ export default function SupplierDataTable({ data }) {
                     <th scope="col">Wood type</th>
                     <th scope="col">Carbon footprint</th>
                     <th scope="col">Responsible sourcing</th>
-                    <th scope="col">Amount (kg/y)</th>
+                    <th scope="col">Amount (ton/y)</th>
                 </tr>
             </thead>
             <tbody>
                 {Object.entries(treeTypes).map(([woodType, values]) => (
                     <tr key={woodType}>
-                        <td>{woodType}</td>
+                        <td>{capitalizeFirstLetter(woodType)}</td>
                         <td>{values.carbon_footprint}</td>
                         <td>{values.responsible_sourcing}</td>
                         <td>{values.amount}</td>
