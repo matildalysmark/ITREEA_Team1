@@ -6,7 +6,6 @@ import SupplierInfoPage from "./Pages/SupplierInfoPage";
 import ComparePage from "./Pages/ComparePage";
 import NotFoundPage from "./Pages/NotFoundPage";
 import supplier_data from '../data/supplier_data.json';
-import CustomScoreEdit from './components/CustomScoreEdit'
 import HomePage from "./Pages/HomePage";
 import Header from "./components/Header/Header";
 import { SidebarBox } from "./components/Sidebar/sidebarbox";
@@ -26,7 +25,6 @@ function AppContent() {
             <Route path="/" element={<ProjectInfoPage />} />
             <Route path="/app" element={<HomePage />} />
             <Route path="/app/compare" element={<ComparePage />} />
-            <Route path="/app/custom_score" element={<CustomScoreEdit />} />
             <Route path="/app/suppliers" element={<SupplierGridPage />} />
             {supplierIds.map((supplierId) => (
               <Route
