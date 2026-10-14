@@ -42,7 +42,18 @@ function RegularLineChart({ axes, inputData, title, backgroundColor, colors }) {
       options={{
         title: title,
         backgroundColor: backgroundColor,
-        colors: colors
+        colors: colors,
+        textStyle: { color: "#ffffff" },
+        titleTextStyle: { color: "#ffffff" },
+        legend: { textStyle: { color: "#ffffff" } },
+        hAxis: {
+          textStyle: { color: "#ffffff" },
+          titleTextStyle: { color: "#ffffff" }
+        },
+        vAxis: {
+          textStyle: { color: "#ffffff" },
+          titleTextStyle: { color: "#ffffff" }
+        }
       }}
       legendToggle
     />

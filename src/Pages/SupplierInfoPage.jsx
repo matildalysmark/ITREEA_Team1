@@ -13,6 +13,16 @@ export default function SupplierInfoPage() {
     const supplier_id = "timberco_ab";
     const data = suppliers_data.suppliers[supplier_id];
     const { axes, inputData } = jsonToChartData(suppliers_data, supplier_id, "amount");
+    const { axes: carbonAxes, inputData: carbonInputData } = jsonToChartData(
+        suppliers_data,
+        supplier_id,
+        "carbon_footprint"
+    );
+    const { axes: sourcingAxes, inputData: sourcingInputData } = jsonToChartData(
+        suppliers_data,
+        supplier_id,
+        "responsible_sourcing"
+    );
 
     return (
         <div>
@@ -25,20 +35,41 @@ export default function SupplierInfoPage() {
             <br />
             <div>
                 <h2>Score over time</h2>
-                <RegularLineChart
-                    axes={axes}
-                    inputData={inputData}
-                    title="Multi-Line Chart"
-                    backgroundColor="white"
-                    colors={["#2e7d32", "#795548", "#9e9e9e"]}
-                />
-
-                <RegularColumnChart
-                    axes={axes}
-                    inputData={inputData}
-                    title="Column Chart with Custom Colors"
-                    backgroundColor="white"
-                />
+                <div className="supplier-chart-container">
+                    <RegularLineChart
+                        axes={axes}
+                        inputData={inputData}
+                        title="Wood Types"
+                        backgroundColor="#16171d"
+                        colors={["#2e7d32", "#795548", "#9e9e9e"]}
+                    />
+                </div>
+            </div>
+            <br />
+            <div>
+                <h2>Carbon footprint over time</h2>
+                <div className="supplier-chart-container">
+                    <RegularColumnChart
+                        axes={carbonAxes}
+                        inputData={carbonInputData}
+                        title="Carbon Footprint by Wood Type"
+                        backgroundColor="#16171d"
+                        colors={["#2e7d32", "#795548", "#9e9e9e"]}
+                    />
+                </div>
+            </div>
+            <br />
+            <div>
+                <h2>Responsible sourcing over time</h2>
+                <div className="supplier-chart-container">
+                    <RegularColumnChart
+                        axes={sourcingAxes}
+                        inputData={sourcingInputData}
+                        title="Responsible Sourcing by Wood Type"
+                        backgroundColor="#16171d"
+                        colors={["#2e7d32", "#795548", "#9e9e9e"]}
+                    />
+                </div>
             </div>
             <br />
             <div>
