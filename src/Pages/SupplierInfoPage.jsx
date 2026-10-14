@@ -34,46 +34,44 @@ export default function SupplierInfoPage() {
             </div>
             <br />
             <div>
+                <SupplierDataTable data={data} />
+            </div>
+            <br />
+            <div>
                 <h2>Score over time</h2>
                 <div className="supplier-chart-container">
                     <RegularLineChart
                         axes={axes}
                         inputData={inputData}
-                        title="Wood Types"
+                        title="Amount of Wood Types"
                         backgroundColor="#16171d"
-                        colors={["#2e7d32", "#795548", "#9e9e9e"]}
+                        colors={["#307236", "#4b3c2b", "#798491"]}
                     />
                 </div>
             </div>
             <br />
             <div>
-                <h2>Carbon footprint over time</h2>
                 <div className="supplier-chart-container">
                     <RegularColumnChart
                         axes={carbonAxes}
                         inputData={carbonInputData}
                         title="Carbon Footprint by Wood Type"
                         backgroundColor="#16171d"
-                        colors={["#2e7d32", "#795548", "#9e9e9e"]}
+                        colors={["#307236", "#4b3c2b", "#798491"]}
                     />
                 </div>
             </div>
             <br />
             <div>
-                <h2>Responsible sourcing over time</h2>
                 <div className="supplier-chart-container">
                     <RegularColumnChart
                         axes={sourcingAxes}
                         inputData={sourcingInputData}
                         title="Responsible Sourcing by Wood Type"
                         backgroundColor="#16171d"
-                        colors={["#2e7d32", "#795548", "#9e9e9e"]}
+                        colors={["#307236", "#4b3c2b", "#798491"]}
                     />
                 </div>
-            </div>
-            <br />
-            <div>
-                <SupplierDataTable data={data} />
             </div>
         </div>
     );

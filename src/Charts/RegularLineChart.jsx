@@ -34,11 +34,13 @@ import { Chart } from "react-google-charts";
  *   colors={["#2e7d32", "#795548", "#9e9e9e"]}
  * />
  */
-function RegularLineChart({ axes, inputData, title, backgroundColor, colors }) {
+function RegularLineChart({ axes, inputData, title, backgroundColor, colors, width, height }) {
   return (
     <Chart
       chartType="LineChart"
       data={[axes, ...inputData]}
+      width={width}
+      height={height}
       options={{
         title: title,
         backgroundColor: backgroundColor,

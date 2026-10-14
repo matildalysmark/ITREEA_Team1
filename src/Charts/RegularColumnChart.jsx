@@ -33,11 +33,13 @@ import { Chart } from "react-google-charts";
  *   backgroundColor="lightblue"
  * />
  */
-function RegularColumnChart({ axes, inputData, title, backgroundColor, colors }) {
+function RegularColumnChart({ axes, inputData, title, backgroundColor, colors, width, height }) {
   return (
     <Chart
       chartType="ColumnChart"
       data={[axes, ...inputData]}
+      width={width}
+      height={height}
       options={{
         title: title,
         backgroundColor: backgroundColor,

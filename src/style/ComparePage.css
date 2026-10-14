@@ -1,9 +1,17 @@
+.compare-table-container {
+    overflow-x: auto;
+}
+
 .compare-table {
     width: calc(100% - 48px);
     margin: 0 24px 24px;
     border-collapse: collapse;
     table-layout: fixed;
     text-align: left;
+}
+
+.compare-table thead th:first-child {
+    width: 200px;
 }
 
 .compare-table th,
@@ -42,9 +50,20 @@
     font-weight: 500;
 }
 
+.compare-table tbody td {
+    min-width: 240px;
+}
+
+.compare-chart-container {
+    width: 100%;
+    min-width: 220px;
+    background-color: #16171d;
+}
+
 @media (max-width: 600px) {
     .compare-table {
         width: calc(100% - 24px);
+        min-width: 780px;
         margin: 0 12px 24px;
         font-size: 0.9rem;
     }
