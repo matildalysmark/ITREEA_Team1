@@ -36,8 +36,6 @@ function RegularScatterChart({ axes, inputData, title, backgroundColor, colors, 
         backgroundColor: backgroundColor,
         colors: colors,
         vAxis: {
-          textStyle: { color: "#ffffff" },
-          titleTextStyle: { color: "#ffffff" },
           viewWindowMode: 'explicit',
           viewWindow: { min: 0, max: max },
           minValue: 0,

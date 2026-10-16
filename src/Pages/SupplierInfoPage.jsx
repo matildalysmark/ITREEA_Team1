@@ -44,7 +44,7 @@ export default function SupplierInfoPage() {
                         axes={axes}
                         inputData={inputData}
                         title="Amount of Wood Types"
-                        backgroundColor="#16171d"
+                        backgroundColor="white"
                         colors={["#307236", "#4b3c2b", "#798491"]}
                     />
                 </div>
@@ -56,7 +56,7 @@ export default function SupplierInfoPage() {
                         axes={carbonAxes}
                         inputData={carbonInputData}
                         title="Carbon Footprint by Wood Type"
-                        backgroundColor="#16171d"
+                        backgroundColor="white"
                         colors={["#307236", "#4b3c2b", "#798491"]}
                     />
                 </div>
@@ -68,7 +68,7 @@ export default function SupplierInfoPage() {
                         axes={sourcingAxes}
                         inputData={sourcingInputData}
                         title="Responsible Sourcing by Wood Type"
-                        backgroundColor="#16171d"
+                        backgroundColor="white"
                         colors={["#307236", "#4b3c2b", "#798491"]}
                     />
                 </div>

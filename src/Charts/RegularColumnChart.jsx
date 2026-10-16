@@ -44,16 +44,7 @@ function RegularColumnChart({ axes, inputData, title, backgroundColor, colors, w
         title: title,
         backgroundColor: backgroundColor,
         colors: colors,
-        textStyle: { color: "#ffffff" },
-        titleTextStyle: { color: "#ffffff" },
-        legend: { textStyle: { color: "#ffffff" } },
-        hAxis: {
-          textStyle: { color: "#ffffff" },
-          titleTextStyle: { color: "#ffffff" }
-        },
         vAxis: {
-          textStyle: { color: "#ffffff" },
-          titleTextStyle: { color: "#ffffff" },
           viewWindowMode: 'explicit',
           viewWindow: { min: 0, max: max },
           minValue: 0,
