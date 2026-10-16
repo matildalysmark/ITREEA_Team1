@@ -1,28 +1,200 @@
 .page-container {
+    --ink: #3c4146;
+    --muted: #798491;
+    --primary: #003399;
+    --primary-light: #aec8e7;
+    --accent: #fcc607;
+    --surface: #ffffff;
+    --surface-muted: #e2e6eb;
+    --line: #e2e6eb;
 
-    background-color: #0058A3;
     min-height: 100vh;
-    color: yellow;
-    padding: 40px;
+    box-sizing: border-box;
+    padding: clamp(32px, 6vw, 80px) clamp(20px, 6vw, 96px);
+    color: var(--ink);
+    background: var(--surface-muted);
+    text-align: left;
 }
 
 .info-header {
-        text-align: center;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: clamp(28px, 5vw, 64px) clamp(24px, 5vw, 72px);
+    border-radius: 28px;
+    background: var(--primary);
+    color: var(--surface);
+    box-shadow: 0 20px 50px var(--line);
+    text-align: center;
+}
+
+.info-header h1 {
+    max-width: 900px;
+    margin: 0 auto 18px;
+    color: var(--surface);
+    font-size: clamp(2.25rem, 5vw, 4.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.055em;
+    font-weight: 750;
+}
+
+.subtitle {
+    max-width: 760px;
+    margin: 0 auto;
+    color: var(--accent);
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    line-height: 1.6;
+}
+
+.info-card {
+    max-width: 1120px;
+    margin: 28px auto 0;
+    padding: clamp(24px, 4vw, 48px);
+    box-sizing: border-box;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: var(--surface);
+    box-shadow: 0 12px 32px var(--line);
+}
+
+.info-card h2 {
+    margin: 0 0 12px;
+    color: var(--primary);
+    font-size: clamp(1.45rem, 2.6vw, 2rem);
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.info-card h2:not(:first-child) {
+    margin-top: 36px;
+}
+
+.info-card p {
+    max-width: 900px;
+    margin: 0 0 18px;
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.75;
+}
+
+.info-card em {
+    display: inline-block;
+    margin: 0 8px 12px 0;
+    color: var(--primary);
+    font-weight: 650;
+    line-height: 1.5;
+}
+
+.info-card .focus-area {
+    display: block;
+    margin-top: -6px;
+    color: var(--primary);
+}
+
+.info-card strong {
+    color: var(--primary);
+}
+
+.demo-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px 0;
+    padding: 12px 22px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--primary);
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 750;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    box-shadow: 0 8px 18px var(--line);
+    transition: background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.demo-button:hover {
+    background: var(--primary-light);
+    box-shadow: 0 10px 22px var(--line);
+    transform: translateY(-2px);
+}
+
+.demo-button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.team-section {
+    max-width: 1120px;
+    margin: 28px auto 0;
+    color: var(--ink);
+}
+
+.team-title {
+    margin: 0 0 8px;
+    color: var(--primary);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    line-height: 1.2;
+    font-weight: 750;
+    text-align: center;
+}
+
+.team-subtitle {
+    display: block;
+    margin-bottom: 18px;
+    color: var(--primary);
+    font-weight: 650;
+    text-align: center;
+}
+
+.team-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.team-member {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--surface);
+}
+
+.team-member strong {
+    color: var(--ink);
+    font-size: 1rem;
+}
+
+.team-member span {
+    overflow-wrap: anywhere;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 700px) {
+    .page-container {
+        padding: 20px 14px 40px;
     }
 
-.subtitle{
-    font-size: 18px;
-}
+    .info-header {
+        border-radius: 20px;
+    }
 
-.info-content{
-    max-width: 900px;
-    margin: 40px auto
-}
+    .info-card {
+        margin-top: 16px;
+        padding: 24px 20px;
+        border-radius: 18px;
+    }
 
-.info-content h2 {
-    margin-bottom: 20px;
-}
+    .team-section {
+        margin-top: 16px;
+    }
 
-.info-content p{
-    line-height: 1.6;
+    .team-list {
+        grid-template-columns: 1fr;
+    }
 }

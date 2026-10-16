@@ -69,7 +69,7 @@ export default function ComparePage() {
                                         axes={chartData.treeTypeAxes}
                                         inputData={chartData.latestTreeTypes}
                                         title="Latest month by tree type"
-                                        backgroundColor="#16171d"
+                                        backgroundColor="white"
                                         colors={["#307236", "#4b3c2b", "#798491"]}
                                   
                                     width="100%"
@@ -89,7 +89,7 @@ export default function ComparePage() {
                                             axes={chartData.overallAxes}
                                             inputData={chartData.overallRows}
                                             title="Overall score"
-                                            backgroundColor="#16171d"
+                                            backgroundColor="white"
                                             colors={["#64b5f6"]}
                                             max={10}
                                             width="100%"
@@ -115,7 +115,7 @@ export default function ComparePage() {
                                                 axes={chartData.axes}
                                                 inputData={chartData.inputData}
                                                 title={label}
-                                                backgroundColor="#16171d"
+                                                backgroundColor="white"
                                                 colors={["#307236", "#4b3c2b", "#798491"]}
                                                 max={10}
                                                 width="100%"
@@ -137,7 +137,7 @@ export default function ComparePage() {
                                             axes={chartData.laborAxes}
                                             inputData={chartData.laborRows}
                                             title="Labor standards"
-                                            backgroundColor="#16171d"
+                                            backgroundColor="white"
                                             colors={["#ffb74d"]}
                                             max={10}
                                             width="100%"
