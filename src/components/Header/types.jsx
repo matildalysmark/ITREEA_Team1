@@ -1,4 +1,4 @@
-export interface TreeInstance {
+export default TreeInstance; {
   id: string;
   x: number;
   y: number;
