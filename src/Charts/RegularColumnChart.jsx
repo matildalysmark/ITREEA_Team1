@@ -33,14 +33,34 @@ import { Chart } from "react-google-charts";
  *   backgroundColor="lightblue"
  * />
  */
-function RegularColumnChart({ axes, inputData, title, backgroundColor }) {
+function RegularColumnChart({ axes, inputData, title, backgroundColor, colors, width, height, max }) {
+  // Adds an annotation column after each value series so values are always drawn on the columns.
+  const isSeries = (header, j) => j > 0 && typeof header === "string";
+  const header = axes.flatMap((a, j) =>
+    isSeries(a, j) ? [a, { type: "string", role: "annotation" }] : [a]
+  );
+  const rows = inputData.map((row) =>
+    row.flatMap((cell, j) =>
+      isSeries(axes[j], j) ? [cell, cell == null ? null : String(cell)] : [cell]
+    )
+  );
+
   return (
     <Chart
       chartType="ColumnChart"
-      data={[axes, ...inputData]}
+      data={[header, ...rows]}
+      width={width}
+      height={height}
       options={{
         title: title,
-        backgroundColor: backgroundColor
+        backgroundColor: backgroundColor,
+        colors: colors,
+        vAxis: {
+          viewWindowMode: 'explicit',
+          viewWindow: { min: 0, max: max },
+          minValue: 0,
+          maxValue: max
+        }
       }}
       legendToggle
     />

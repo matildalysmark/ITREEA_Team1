@@ -26,7 +26,7 @@ import { Chart } from "react-google-charts";
  * />
  * 
  */
-function RegularScatterChart({ axes, inputData, title, backgroundColor, colors }) {
+function RegularScatterChart({ axes, inputData, title, backgroundColor, colors, max }) {
   return (
     <Chart
       chartType="ScatterChart"
@@ -35,6 +35,12 @@ function RegularScatterChart({ axes, inputData, title, backgroundColor, colors }
         title: title,
         backgroundColor: backgroundColor,
         colors: colors,
+        vAxis: {
+          viewWindowMode: 'explicit',
+          viewWindow: { min: 0, max: max },
+          minValue: 0,
+          maxValue: max
+        }
       }}
       legendToggle
     />

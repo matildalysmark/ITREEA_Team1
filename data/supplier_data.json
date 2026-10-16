@@ -138,7 +138,7 @@
                 "2026-01": {
                     "labor_standards": 4,
                     "tree_types": {
-                        "acai": {
+                        "pine": {
                             "carbon_footprint": 5,
                             "responsible_sourcing": 8,
                             "amount": 202
@@ -153,7 +153,7 @@
                 "2026-02": {
                     "labor_standards": 4,
                     "tree_types": {
-                        "acai": {
+                        "pine": {
                             "carbon_footprint": 5,
                             "responsible_sourcing": 8,
                             "amount": 138
@@ -168,7 +168,7 @@
                 "2026-03": {
                     "labor_standards": 5,
                     "tree_types": {
-                        "acai": {
+                        "pine": {
                             "carbon_footprint": 6,
                             "responsible_sourcing": 8,
                             "amount": 124
@@ -183,7 +183,7 @@
                 "2026-04": {
                     "labor_standards": 5,
                     "tree_types": {
-                        "acai": {
+                        "pine": {
                             "carbon_footprint": 6,
                             "responsible_sourcing": 8,
                             "amount": 218
@@ -198,7 +198,7 @@
                 "2026-05": {
                     "labor_standards": 5,
                     "tree_types": {
-                        "acai": {
+                        "pine": {
                             "carbon_footprint": 6,
                             "responsible_sourcing": 8,
                             "amount": 133
@@ -213,7 +213,7 @@
                 "2026-06": {
                     "labor_standards": 5,
                     "tree_types": {
-                        "acai": {
+                        "pine": {
                             "carbon_footprint": 7,
                             "responsible_sourcing": 8,
                             "amount": 186

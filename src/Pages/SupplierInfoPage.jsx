@@ -20,6 +20,7 @@ import jsonToChartData from "../Charts/JSONToChartData";
 import RegularLineChart from "../Charts/RegularLineChart";
 import RegularColumnChart from "../Charts/RegularColumnChart";
 import suppliers_data from "../../data/supplier_data.json";
+import { getMonthlyAverageScores } from "../helper/scoreUtils";
 
 export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
   // Läser ID antingen från props eller direkt från URL (/app/suppliers/:id)
@@ -28,8 +29,26 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
 
   const data = suppliers_data.suppliers[activeId] || {};
 
-  // 2. Dina ursprungliga metodanrop för graferna
-  const { axes, inputData } = jsonToChartData(suppliers_data, activeId, "amount");
+    // 2. Dina ursprungliga metodanrop för graferna
+    const { axes, inputData } = jsonToChartData(suppliers_data, activeId, "amount");
+    const { axes: carbonAxes, inputData: carbonInputData } = jsonToChartData(
+        suppliers_data,
+        activeId,
+        "carbon_footprint"
+    );
+    const { axes: sourcingAxes, inputData: sourcingInputData } = jsonToChartData(
+        suppliers_data,
+        activeId,
+        "responsible_sourcing"
+    );
+    const laborAxes = ["Month", "Labor standards"];
+    const laborInputData = Object.keys(data.months ?? {})
+        .sort()
+        .map((month) => [month, data.months[month]?.labor_standards ?? null]);
+    const averageAxes = ["Month", "Average score"];
+    const averageInputData = Object.entries(getMonthlyAverageScores(data))
+        .sort(([a], [b]) => a.localeCompare(b))
+        .map(([month, score]) => [month, Number(score)]);
 
   const initials = data.display_name
     ? data.display_name.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase()
@@ -37,6 +56,7 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
 
   // Kontrollera att graferna faktiskt har rader att rita
   const hasChartData = Array.isArray(inputData) && inputData.length > 1;
+
 
   return (
     <div className="supplier-dashboard-container">
@@ -162,19 +182,45 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
             <div className="existing-graphs-content">
               {hasChartData ? (
                 <>
-                  <RegularLineChart
+                <RegularColumnChart
+                    axes={averageAxes}
+                    inputData={averageInputData}
+                    title="Average Score per Month"
+                    backgroundColor="white"
+                    colors={["#4767af"]}
+                    max={10}
+                />
+                <RegularColumnChart
+                    axes={carbonAxes}
+                    inputData={carbonInputData}
+                    title="Carbon Footprint by Wood Type"
+                    backgroundColor="white"
+                    colors={["#307236", "#4b3c2b", "#798491"]}
+                    max={10}
+                />
+                <RegularColumnChart
+                    axes={sourcingAxes}
+                    inputData={sourcingInputData}
+                    title="Responsible Sourcing by Wood Type"
+                    backgroundColor="white"
+                    colors={["#307236", "#4b3c2b", "#798491"]}
+                    max={10}
+                />
+                <RegularColumnChart
+                    axes={laborAxes}
+                    inputData={laborInputData}
+                    title="Labor Standards by Wood Type"
+                    backgroundColor="white"
+                    colors={["#4767af"]}
+                    max={10}
+                />
+                <RegularLineChart
                     axes={axes}
                     inputData={inputData}
-                    title="Multi-Line Chart"
+                    title="Amount of each Wood Type"
                     backgroundColor="white"
-                    colors={["#2e7d32", "#795548", "#9e9e9e"]}
-                  />
-                  <RegularColumnChart
-                    axes={axes}
-                    inputData={inputData}
-                    title="Column Chart with Custom Colors"
-                    backgroundColor="white"
-                  />
+                    colors={["#307236", "#4b3c2b", "#798491"]}
+                />
                 </>
               ) : (
                 <p style={{ color: "#64748b", padding: "16px", textAlign: "center" }}>
