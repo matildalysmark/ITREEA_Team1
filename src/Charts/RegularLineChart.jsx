@@ -34,7 +34,7 @@ import { Chart } from "react-google-charts";
  *   colors={["#2e7d32", "#795548", "#9e9e9e"]}
  * />
  */
-function RegularLineChart({ axes, inputData, title, backgroundColor, colors, width, height }) {
+function RegularLineChart({ axes, inputData, title, backgroundColor, colors, width, height, max }) {
   return (
     <Chart
       chartType="LineChart"
@@ -54,7 +54,11 @@ function RegularLineChart({ axes, inputData, title, backgroundColor, colors, wid
         },
         vAxis: {
           textStyle: { color: "#ffffff" },
-          titleTextStyle: { color: "#ffffff" }
+          titleTextStyle: { color: "#ffffff" },
+          viewWindowMode: 'explicit',
+          viewWindow: { min: 0, max: max },
+          minValue: 0,
+          maxValue: max
         }
       }}
       legendToggle

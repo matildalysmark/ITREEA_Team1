@@ -71,8 +71,9 @@ export default function ComparePage() {
                                         title="Latest month by tree type"
                                         backgroundColor="#16171d"
                                         colors={["#307236", "#4b3c2b", "#798491"]}
-                                        width="100%"
-                                        height="220px"
+                                  
+                                    width="100%"
+                                    height="220px"
                                     />
                                 </div>
                             </td>
@@ -90,6 +91,7 @@ export default function ComparePage() {
                                             title="Overall score"
                                             backgroundColor="#16171d"
                                             colors={["#64b5f6"]}
+                                            max={10}
                                             width="100%"
                                             height="220px"
                                         />
@@ -115,6 +117,7 @@ export default function ComparePage() {
                                                 title={label}
                                                 backgroundColor="#16171d"
                                                 colors={["#307236", "#4b3c2b", "#798491"]}
+                                                max={10}
                                                 width="100%"
                                                 height="220px"
                                             />
@@ -136,6 +139,7 @@ export default function ComparePage() {
                                             title="Labor standards"
                                             backgroundColor="#16171d"
                                             colors={["#ffb74d"]}
+                                            max={10}
                                             width="100%"
                                             height="220px"
                                         />

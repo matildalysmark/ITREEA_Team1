@@ -33,7 +33,7 @@ import { Chart } from "react-google-charts";
  *   backgroundColor="lightblue"
  * />
  */
-function RegularColumnChart({ axes, inputData, title, backgroundColor, colors, width, height }) {
+function RegularColumnChart({ axes, inputData, title, backgroundColor, colors, width, height, max }) {
   return (
     <Chart
       chartType="ColumnChart"
@@ -53,7 +53,11 @@ function RegularColumnChart({ axes, inputData, title, backgroundColor, colors, w
         },
         vAxis: {
           textStyle: { color: "#ffffff" },
-          titleTextStyle: { color: "#ffffff" }
+          titleTextStyle: { color: "#ffffff" },
+          viewWindowMode: 'explicit',
+          viewWindow: { min: 0, max: max },
+          minValue: 0,
+          maxValue: max
         }
       }}
       legendToggle
