@@ -6,11 +6,14 @@ import SortButton from '../Widgets/SortButton';
 import CustomScoreEditButton from '../components/CustomScoreEditButton'
 import { compareSuppliers } from '../helper/supplierUtils';
 import { useState } from 'react';
+import { useScoreTuningStore } from '../helper/store.js'
 
 export default function SupplierGridPage() {
     const [sortBy, setSortBy] = useState('display_name');
+    const {scoreTuning, _} = useScoreTuningStore()
+
     const supplierIds = Object.entries(supplier_data.suppliers)
-        .sort(compareSuppliers(sortBy))
+        .sort(compareSuppliers(sortBy, scoreTuning))
         .map(([supplierId]) => supplierId);
 
     return (
