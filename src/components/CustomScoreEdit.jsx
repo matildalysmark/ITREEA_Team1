@@ -1,27 +1,31 @@
 import { useState } from "react";
+import '../style/CustomScoreEdit.css';
+import { useScoreTuningStore } from '../helper/store.js'
 
 export default function CustomScoreEdit() {
-    const [scoreTuning, setScoreTuning] = useState({
-        carbon_footprint: 1,
-        responsible_sourcing: 1,
-        labor_standards: 1,
-    });
+    const {scoreTuning, updateScoreTuning} = useScoreTuningStore()
 
-    // const handleSLi
+    const handleSliderChange = (e) => {
+        const { name, value } = e.target
+        updateScoreTuning(name, Number(value))
+    }
 
     return (
-        <div>
-            <h3>weight of attributes for overall score</h3>
-            <h4>carbon_footprint</h4>
-            <input type="range" min="0" max="1" name="carbon_footprint" id=""/>
+        <div className="custom-score-edit">
+            <h3>tune weights for overall score</h3>
+            <h4>carbon_footprint {scoreTuning.carbon_footprint}</h4>
+            <input type="range" min="0" max="1" step="0.1" name="carbon_footprint"
+                value={scoreTuning.carbon_footprint} onChange={handleSliderChange} />
             <br />
             <br />
-            <h4>responsible_sourcing</h4>
-            <input type="range" name="responsible_sourcing" id="" />
+            <h4>responsible_sourcing {scoreTuning.responsible_sourcing}</h4>
+            <input type="range" min="0" max="1" step="0.1" name="responsible_sourcing"
+                value={scoreTuning.responsible_sourcing} onChange={handleSliderChange} />
             <br />
             <br />
-            <h4>labor_standards</h4>
-            <input type="range" name="labor_standards" id="" />
+            <h4>labor_standards {scoreTuning.labor_standards}</h4>
+            <input type="range" min="0" max="1" step="0.1" name="labor_standards"
+                value={scoreTuning.labor_standards} onChange={handleSliderChange} />
         </div>
     )
 }

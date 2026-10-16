@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/*container for all panels below the map*/
+.panels-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex: 1;
+    width: 100%;
+    height: fit-content;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.panel-item {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 15px;
+    width: 100%;
+    padding: 10px 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.142);
+    box-sizing: border-box;
+}
+
+.sub-header{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 0;
+    padding-bottom: 10px;
+    gap: 10px;
+}
+
+.middle-text{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 2px;
+}
+
+.middle-text h4,
+.middle-text h3 {
+    margin: 0;
+}
+
+.middle-text h4 {
+    font-size: 10px;
+    color: #969899;
+}
+
+.middle-text h3 {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.date-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    background-color: #E7F1FA;
+    box-sizing: border-box;
+    line-height: 1;
+}
+
+.date-box h4 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: #173F31;
+}
+
+.date-box h5 {
+    margin: 0;
+    font-size: 12px;
+    color: #0058A3;
+    margin-top: 1px;
+}
+
+.field-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: space-between;
+    gap: 12px; 
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.field-label {
+    color: #64748b;
+    font-size: 12px;
+    width: 130px;
+    flex-shrink: 0;
+}
+
+.field{
+    flex: 1;
+    height: 8px;
+    border-radius: 4px;
+    background-color: #93abdc;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.field-fill{
+    height: 100%;
+    border-radius: 4px; 
+    background-color: #42619e;
+}
+
+.field-percentage {
+    font-weight: bold;
+    font-size: 12px;
+    color: #0f172a;
+    width: 35px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+@media (max-width: 1100px) {
+    .panels-container {
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+    }
+}

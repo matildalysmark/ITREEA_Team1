@@ -2,6 +2,8 @@ import '../style/SummaryCard.css';
 import data from '/data/supplier_data.json'
 import { Atom, TreePine, HandHeart } from 'lucide-react';
 import { useNavigate } from 'react-router-dom'
+import { useScoreTuningStore } from '../helper/store.js'
+import { getOverallScore } from "../helper/scoreUtils";
 
 export default function SummaryCard({ id }) {
     const supplier = data.suppliers[id]; // supplier id, e.g. 'abc_ab'
@@ -11,6 +13,8 @@ export default function SummaryCard({ id }) {
     if (!supplier) {
         return <div className='summary-container'>Supplier missing</div>;
     }
+
+    const {scoreTuning, _} = useScoreTuningStore()
 
     return (
         <div className='summary-container' onClick={() => navigate(`/app/suppliers/${id}`)}>
@@ -22,27 +26,42 @@ export default function SummaryCard({ id }) {
 
                 {/*Carbon footprint bar*/}
                 <div className='bar-wrapper'>
-                    <div className='bar' style={{backgroundColor: '#D6DDD9'}}>
-                        <div className='bar-fill' style={{height: `${(supplier.carbon_footprint / 10) * 100}%`, backgroundColor: '#2C594F'}}></div>
+                    <span className='individual-value'>{supplier["carbon_footprint"]}</span>
+                    <div className='bar carbon-bar'>
+                        <div className='bar-fill carbon-bar-fill' style={{height: `${(supplier.carbon_footprint / 10) * 100}%`}}></div>
                     </div>
-                    <Atom size={20} color='#2C594F'/>
+                    <Atom className='carbon-icon' size={20}/>
                 </div>
 
                 {/*Resourcing bar*/}
                 <div className='bar-wrapper'>
-                    <div className='bar' style={{backgroundColor: '#DDE2D1'}}>
-                        <div className='bar-fill' style={{height: `${(supplier.responsible_sourcing / 10) * 100}%`, backgroundColor: '#52732B'}}></div>
+                    <span className='individual-value'>{supplier["responsible_sourcing"]}</span>
+                    <div className='bar resourcing-bar'>
+                        <div className='bar-fill resourcing-bar-fill' style={{height: `${(supplier.responsible_sourcing / 10) * 100}%`}}></div>
                     </div>
-                    <TreePine size={20} color='#52732B'/>
+                    <TreePine className='resourcing-icon' size={20}/>
                 </div>
 
                 {/*Labor bar*/}
                 <div className='bar-wrapper'>
-                    <div className='bar' style={{backgroundColor: '#F0D4CF'}}>
-                        <div className='bar-fill' style={{height: `${(supplier.labor_standards / 10) * 100}%`, backgroundColor: '#A8251D'}}></div>
+                    <span className='individual-value'>{supplier["labor_standards"]}</span>
+                    <div className='bar labor-bar'>
+                        <div className='bar-fill labor-bar-fill' style={{height: `${(supplier.labor_standards / 10) * 100}%`}}></div>
                     </div>
-                    <HandHeart size={20} color='#A8251D'/>
+                    <HandHeart className='labor-icon' size={20}/>
                 </div>
+            </div>
+
+            <div className='overall-score'>
+                <span className='overall-score-label'>Overall score</span>
+                <span className='overall-score-value'>{getOverallScore(supplier, scoreTuning)}</span>
+            </div>
+
+            <div className='overall-score-bar'>
+                <div
+                    className='overall-score-bar-fill'
+                    style={{width: `${(getOverallScore(supplier, scoreTuning) / 10) * 100}%`}}
+                ></div>
             </div>
         </div>
     );

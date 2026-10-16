@@ -1,46 +1,11 @@
-{/*
-
 import React from "react";
-import { 
-  ArrowRight, 
-  ShieldCheck, 
-  Award, 
-  FileText, 
-  Download 
-} from "lucide-react";
+import { ArrowRight, Award, ShieldCheck, FileText, Download } from "lucide-react";
 
-export default function SupplierSidePanel() {
-  const timelineEvents = [
-    {
-      date: "02 OCT",
-      title: "ISO 14001 evidence verified",
-      subtitle: "Validated by Marcus Chen",
-    },
-    {
-      date: "28 SEP",
-      title: "Q3 performance data received",
-      subtitle: "Automated intake · SAP Ariba",
-    },
-    {
-      date: "17 SEP",
-      title: "Facility capacity updated",
-      subtitle: "Luleå smelter · +12,000 t/yr",
-    },
-  ];
-
-  const certifications = [
-    { name: "ISO 14001", validity: "Valid to Mar 2028", status: "success" },
-    { name: "ISO 9001", validity: "Valid to Jan 2027", status: "success" },
-    { name: "ASI Performance", validity: "Valid to Dec 2026", status: "warning" },
-    { name: "ISO 45001", validity: "Valid to Sep 2027", status: "success" },
-  ];
-
-  const documents = [
-    { name: "Master supply agreement.pdf", meta: "Contract · 2.4 MB" },
-    { name: "2026 ESG evidence pack.zip", meta: "Evidence · 18.2 MB" },
-    { name: "Q3 performance review.pdf", meta: "Performance · 1.8 MB" },
-  ];
-
+export default function SupplierSidePanel({
+  timelineEvents = [],
+  certifications = [],
+  documents = []
+}) {
   return (
     <aside className="supplier-right-sidebar">
       {/* 1. Timeline Card */}
@@ -50,7 +15,7 @@ export default function SupplierSidePanel() {
             <h3 className="panel-title">Timeline</h3>
             <span className="panel-caption">Recent supplier activity</span>
           </div>
-          <button className="widget-action-link">
+          <button className="widget-action-link" type="button">
             <span>View all</span>
             <ArrowRight size={14} />
           </button>
@@ -104,7 +69,7 @@ export default function SupplierSidePanel() {
             <h3 className="panel-title">Documents</h3>
             <span className="panel-caption">18 files</span>
           </div>
-          <button className="widget-action-link">
+          <button className="widget-action-link" type="button">
             <span>Open library</span>
             <ArrowRight size={14} />
           </button>
@@ -120,7 +85,7 @@ export default function SupplierSidePanel() {
                 <span className="doc-name">{doc.name}</span>
                 <span className="doc-meta">{doc.meta}</span>
               </div>
-              <button className="doc-download-btn" aria-label="Download document">
+              <button className="doc-download-btn" type="button" aria-label="Download document">
                 <Download size={15} />
               </button>
             </div>
@@ -130,5 +95,3 @@ export default function SupplierSidePanel() {
     </aside>
   );
 }
-
-*/}

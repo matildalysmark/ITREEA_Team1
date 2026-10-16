@@ -4,6 +4,7 @@
     background-color: #2C594F;
     border-radius: 10px;
     width: 130px;
+    height: 100%;
     border-style: none;
     display: flex;
     align-items: center;
@@ -15,4 +16,14 @@
 .custom-score-edit-button:hover {
     translate: 0 -1px;
     outline-style: auto;
+}
+
+.custom-score-edit-menu {
+    position: absolute;
+    z-index: 2;
+    padding: 5px;
+    background-color: white;
+    border: 1px solid rgba(44, 89, 79, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
 }
