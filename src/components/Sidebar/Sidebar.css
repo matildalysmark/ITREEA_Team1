@@ -77,6 +77,27 @@
   color: #fff;
 }
 
+.above-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.exit-demo-button {
+  width: auto;
+  justify-content: center;
+  margin-bottom: 15px;
+  padding: 10px 24px;
+  background-color: #edd167;
+  color: #2a3547;
+  font-weight: 600;
+}
+
+.exit-demo-button:hover {
+  background-color: #f0d060;
+  color: #2a3547;
+}
+
 /* Aktiv knapp (som "Suppliers") */
 .sidebar-nav-item.active {
   background-color: #edd167;
@@ -96,7 +117,6 @@
 
 /* Footer / Profil */
 .sidebar-footer {
-  margin-top: auto;
   padding-top: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
