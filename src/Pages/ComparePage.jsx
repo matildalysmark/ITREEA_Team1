@@ -25,7 +25,7 @@ export default function ComparePage() {
     }));
 
     return (
-        <main>
+        <main className="compare-page">
             <h1>Compare suppliers</h1>
             <div className="compare-table-container">
             <table className="compare-table">
@@ -60,25 +60,6 @@ export default function ComparePage() {
                             ))}
                         </tr>
                     ))}
-                    <tr>
-                        <th scope="row">Currently delivered treetypes</th>
-                        {supplierCharts.map((chartData) => (
-                            <td key={chartData.supplier.display_name}>
-                                <div className="compare-chart-container">
-                                    <RegularColumnChart
-                                        axes={chartData.treeTypeAxes}
-                                        inputData={chartData.latestTreeTypes}
-                                        title="Latest month by tree type"
-                                        backgroundColor="white"
-                                        colors={["#307236", "#4b3c2b", "#798491"]}
-                                  
-                                    width="100%"
-                                    height="220px"
-                                    />
-                                </div>
-                            </td>
-                        ))}
-                    </tr>
                     <tr>
                         <th scope="row">Overall score over time</th>
                         {supplierCharts.map((chartData) => {
@@ -147,6 +128,25 @@ export default function ComparePage() {
                                 </td>
                             );
                         })}
+                    </tr>
+                    <tr>
+                        <th scope="row">Currently delivered treetypes</th>
+                        {supplierCharts.map((chartData) => (
+                            <td key={chartData.supplier.display_name}>
+                                <div className="compare-chart-container">
+                                    <RegularColumnChart
+                                        axes={chartData.treeTypeAxes}
+                                        inputData={chartData.latestTreeTypes}
+                                        title="Latest month by tree type"
+                                        backgroundColor="white"
+                                        colors={["#307236", "#4b3c2b", "#798491"]}
+                                  
+                                    width="100%"
+                                    height="220px"
+                                    />
+                                </div>
+                            </td>
+                        ))}
                     </tr>
                 </tbody>
             </table>
