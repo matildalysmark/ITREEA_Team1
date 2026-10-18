@@ -30,3 +30,14 @@ export function NavItem({ icon, label, badge, isActive, onClick }){
     )
 }
 
+export function ExitDemoButton({ onClick }) {
+    return (
+        <button
+            type="button"
+            className="sidebar-nav-item exit-demo-button"
+            onClick={onClick}
+        >
+            <span className="nav-label">Exit Demo</span>
+        </button>
+    )
+}

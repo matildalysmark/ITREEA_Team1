@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { NavItem, UserProfile} from './SidebarItems';
+import { ExitDemoButton, NavItem, UserProfile } from './SidebarItems';
 import './Sidebar.css';
 import { useNavigate } from 'react-router-dom'
 
@@ -50,6 +50,10 @@ export function SidebarBox() {
                     }}
                 />
             </nav>
+
+            <div className='above-footer'>
+                <ExitDemoButton onClick={() => navigate('/')} />
+            </div>
 
             <div className='sidebar-footer'>
                 <UserProfile
