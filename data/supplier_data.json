@@ -5,6 +5,11 @@
             "carbon_footprint": 5.3,
             "responsible_sourcing": 7.6,
             "labor_standards": 7,
+            "used_capacity": {
+                "pine": 79,
+                "oak": 20,
+                "birch": 12
+            },
             "months": {
                 "2026-01": {
                     "labor_standards": 7,
@@ -134,6 +139,10 @@
             "carbon_footprint": 8,
             "responsible_sourcing": 7,
             "labor_standards": 6,
+            "used_capacity": {
+                "pine": 92,
+                "oak": 43
+            },
             "months": {
                 "2026-01": {
                     "labor_standards": 4,
