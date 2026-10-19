@@ -1,19 +1,18 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { 
-  Send, 
-  Pencil, 
-  Bell, 
-  DollarSign, 
-  Truck, 
-  CheckCircle2, 
-  Leaf, 
-  ArrowUpRight, 
-  ArrowDownRight 
+import {
+  Send,
+  Pencil,
+  Bell,
+  Star,
+  Leaf,
+  ShieldCheck,
+  Users,
+
 } from "lucide-react";
 import "../style/SupplierInfoPage.css";
 
-import SupplierSidePanel from "../components/SupplierSidePanel"; 
+import SupplierSidePanel from "../components/SupplierSidePanel";
 import SupplierDataTable from "../components/SupplierDataTable";
 import SupplierSummary from "../components/SupplierSummary";
 import jsonToChartData from "../Charts/JSONToChartData";
@@ -29,32 +28,45 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
 
   const data = suppliers_data.suppliers[activeId] || {};
 
-    // 2. Dina ursprungliga metodanrop för graferna
-    const { axes, inputData } = jsonToChartData(suppliers_data, activeId, "amount");
-    const { axes: carbonAxes, inputData: carbonInputData } = jsonToChartData(
-        suppliers_data,
-        activeId,
-        "carbon_footprint"
-    );
-    const { axes: sourcingAxes, inputData: sourcingInputData } = jsonToChartData(
-        suppliers_data,
-        activeId,
-        "responsible_sourcing"
-    );
-    const laborAxes = ["Month", "Labor standards"];
-    const laborInputData = Object.keys(data.months ?? {})
-        .sort()
-        .map((month) => [month, data.months[month]?.labor_standards ?? null]);
-    const averageAxes = ["Month", "Average score"];
-    const averageInputData = Object.entries(getMonthlyAverageScores(data))
-        .sort(([a], [b]) => a.localeCompare(b))
-        .map(([month, score]) => [month, Number(score)]);
+
+  // Sort all suppliers by average_score descending to calculate rank
+  const supplierList = Object.entries(suppliers_data.suppliers || {})
+    .map(([id, s]) => ({
+      id,
+      score: s.average_score ?? 0,
+    }))
+    .sort((a, b) => b.score - a.score);
+
+  const totalSuppliers = supplierList.length;
+  const rankIndex = supplierList.findIndex((s) => s.id === activeId);
+  const rank = rankIndex !== -1 ? rankIndex + 1 : "-";
+
+  // Graferna
+  const { axes, inputData } = jsonToChartData(suppliers_data, activeId, "amount");
+  const { axes: carbonAxes, inputData: carbonInputData } = jsonToChartData(
+    suppliers_data,
+    activeId,
+    "carbon_footprint"
+  );
+  const { axes: sourcingAxes, inputData: sourcingInputData } = jsonToChartData(
+    suppliers_data,
+    activeId,
+    "responsible_sourcing"
+  );
+  const laborAxes = ["Month", "Labor standards"];
+  const laborInputData = Object.keys(data.months ?? {})
+    .sort()
+    .map((month) => [month, data.months[month]?.labor_standards ?? null]);
+  const averageAxes = ["Month", "Average score"];
+  const averageInputData = Object.entries(getMonthlyAverageScores(data))
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([month, score]) => [month, Number(score)]);
 
   const initials = data.display_name
     ? data.display_name.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase()
     : "TC";
 
-  // Kontrollera att graferna faktiskt har rader att rita
+  // Ser om graferna faktiskt har rader att rita
   const hasChartData = Array.isArray(inputData) && inputData.length > 1;
 
 
@@ -95,9 +107,13 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
           </div>
           <div className="company-text-details">
             <div className="company-name-row">
-              <h2>{data.display_name} SIA</h2>
-              <span className="badge badge-success">• APPROVED</span>
-              <span className="badge badge-neutral">• LOW RISK</span>
+              <h2>{data.display_name}</h2>
+              {data.country && (
+                <span className="badge badge-country">
+                  <span className="country-flag-icon">{data.country_flag || "🌐"}</span>
+                  <span>{data.country}</span>
+                </span>
+              )}
             </div>
             <p className="company-subdescription">
               Integrated sawmill and forest partner supplying certified softwood and hardwood since 2018.
@@ -105,122 +121,143 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
           </div>
         </div>
 
-        <div className="hero-score-section">
-          <div className="score-radial-circle">
-            <span className="score-number">91</span>
-          </div>
-          <div className="score-details-meta">
-            <span className="score-title">Overall weighted score</span>
-            <span className="score-subtitle">#1 best fit</span>
-            <span className="score-timestamp">Updated today</span>
+        <div className="hero-rank-card">
+          <span className="rank-label">Overall Ranking</span>
+          <div className="rank-value-row">
+            <span className="rank-number">{rank}</span>
+            <span className="rank-total">/ {totalSuppliers}</span>
           </div>
         </div>
       </section>
 
-      {/* KPI-kort */}
+
+      {/* 3. Summary Metrics mapped into the 4 Top Cards */}
       <section className="kpi-metric-grid">
+        {/* Card 1: Overall Score */}
         <div className="kpi-card">
           <div className="kpi-card-header">
-            <span>Annual spend</span>
-            <DollarSign size={17} className="kpi-icon" />
+            <span>Overall score</span>
+            <Star size={17} className="kpi-icon" />
           </div>
-          <div className="kpi-metric-val">$38.4M</div>
-          <div className="kpi-subtext">9.0% of portfolio spend</div>
+          <div className="kpi-metric-val">
+            {data.average_score ?? 6.6} <span className="kpi-max-val">/ 10</span>
+          </div>
+          <div className="kpi-progress-track">
+            <div
+              className="kpi-progress-fill"
+              style={{ width: `${((data.average_score ?? 6.6) / 10) * 100}%` }}
+            />
+          </div>
+          <div className="kpi-subtext">Overall benchmark</div>
         </div>
 
+        {/* Card 2: Carbon Footprint */}
         <div className="kpi-card">
           <div className="kpi-card-header">
-            <span>On-time delivery</span>
-            <Truck size={17} className="kpi-icon" />
+            <span>Carbon footprint</span>
+            <Leaf size={17} className="icon-emerald" />
           </div>
-          <div className="kpi-metric-val">96.8%</div>
-          <div className="kpi-subtext delta-positive">
-            <ArrowUpRight size={13} /> 1.4 pts vs last quarter
+          <div className="kpi-metric-val">
+            {data.carbon_footprint ?? 8} <span className="kpi-max-val">/ 10</span>
           </div>
+          <div className="kpi-progress-track">
+            <div
+              className="kpi-progress-fill"
+              style={{ width: `${((data.carbon_footprint ?? 8) / 10) * 100}%` }}
+            />
+          </div>
+          <div className="kpi-subtext">Verified emissions tier</div>
         </div>
 
+        {/* Card 3: Responsible Sourcing */}
         <div className="kpi-card">
           <div className="kpi-card-header">
-            <span>Quality acceptance</span>
-            <CheckCircle2 size={17} className="kpi-icon" />
+            <span>Responsible sourcing</span>
+            <ShieldCheck size={17} className="icon-blue" />
           </div>
-          <div className="kpi-metric-val">99.2%</div>
-          <div className="kpi-subtext">18 ppm defect rate</div>
+          <div className="kpi-metric-val">
+            {data.responsible_sourcing ?? 7} <span className="kpi-max-val">/ 10</span>
+          </div>
+          <div className="kpi-progress-track">
+            <div
+              className="kpi-progress-fill"
+              style={{ width: `${((data.responsible_sourcing ?? 7) / 10) * 100}%` }}
+            />
+          </div>
+          <div className="kpi-subtext">FSC & PEFC certified ratio</div>
         </div>
 
+        {/* Card 4: Labor Standards */}
         <div className="kpi-card">
           <div className="kpi-card-header">
-            <span>Carbon intensity</span>
-            <Leaf size={17} className="kpi-icon" />
+            <span>Labor standards</span>
+            <Users size={17} className="icon-purple" />
           </div>
-          <div className="kpi-metric-val">{data.carbon_footprint ? (data.carbon_footprint / 2.9).toFixed(2) : "1.82"}</div>
-          <div className="kpi-subtext">
-            tCO₂e / tonne · <ArrowDownRight size={13} /> 8%
+          <div className="kpi-metric-val">
+            {data.labor_standards ?? 6} <span className="kpi-max-val">/ 10</span>
           </div>
+          <div className="kpi-progress-track">
+            <div
+              className="kpi-progress-fill"
+              style={{ width: `${((data.labor_standards ?? 6) / 10) * 100}%` }}
+            />
+          </div>
+          <div className="kpi-subtext">Audit compliance score</div>
         </div>
       </section>
 
 
       <section className="analytics-layout-grid">
-        {/*Summary-komponent */}
-        <div className="analytics-sidebar-column">
-          <div className="dashboard-panel-card">
-            <h3 className="panel-title">Summary</h3>
-            <span className="panel-caption">Core indicators & benchmarks</span>
-            <div className="summary-component-slot">
-              <SupplierSummary data={data} />
-            </div>
-          </div>
-        </div>
+
 
         {/* Befintliga grafer */}
         <div className="analytics-main-slot">
           <div className="dashboard-panel-card existing-graphs-box">
             <h3 className="panel-title">Score over time</h3>
             <span className="panel-caption">Multi-line & column distribution</span>
-            
+
             <div className="existing-graphs-content">
               {hasChartData ? (
                 <>
-                <RegularColumnChart
+                  <RegularColumnChart
                     axes={averageAxes}
                     inputData={averageInputData}
                     title="Average Score per Month"
                     backgroundColor="white"
                     colors={["#4767af"]}
                     max={10}
-                />
-                <RegularColumnChart
+                  />
+                  <RegularColumnChart
                     axes={carbonAxes}
                     inputData={carbonInputData}
                     title="Carbon Footprint by Wood Type"
                     backgroundColor="white"
                     colors={["#307236", "#4b3c2b", "#798491"]}
                     max={10}
-                />
-                <RegularColumnChart
+                  />
+                  <RegularColumnChart
                     axes={sourcingAxes}
                     inputData={sourcingInputData}
                     title="Responsible Sourcing by Wood Type"
                     backgroundColor="white"
                     colors={["#307236", "#4b3c2b", "#798491"]}
                     max={10}
-                />
-                <RegularColumnChart
+                  />
+                  <RegularColumnChart
                     axes={laborAxes}
                     inputData={laborInputData}
                     title="Labor Standards by Wood Type"
                     backgroundColor="white"
                     colors={["#4767af"]}
                     max={10}
-                />
-                <RegularLineChart
+                  />
+                  <RegularLineChart
                     axes={axes}
                     inputData={inputData}
                     title="Amount of each Wood Type"
                     backgroundColor="white"
                     colors={["#307236", "#4b3c2b", "#798491"]}
-                />
+                  />
                 </>
               ) : (
                 <p style={{ color: "#64748b", padding: "16px", textAlign: "center" }}>
@@ -232,7 +269,7 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
         </div>
       </section>
 
-    
+
       <section className="data-table-section">
         <div className="dashboard-panel-card data-table-card">
           <h3 className="panel-title">Data</h3>

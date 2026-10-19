@@ -12,7 +12,7 @@ export default function SupplierSummary({ data = {} }) {
   //4 summary metrics
   const summaryMetrics = [
     {
-      label: "Average score",
+      label: "Overall score",
       value: data.average_score ?? 6.6,
       pct: Math.min(((data.average_score ?? 6.6) / 10) * 100, 100),
     },

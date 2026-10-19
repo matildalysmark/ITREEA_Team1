@@ -136,6 +136,8 @@
         },
         "bich_bros_ab" : {
             "display_name": "Birch Bros AB",
+            "country": "Sweden",
+            "country_flag": "🇸🇪",
             "carbon_footprint": 8,
             "responsible_sourcing": 7,
             "labor_standards": 6,
