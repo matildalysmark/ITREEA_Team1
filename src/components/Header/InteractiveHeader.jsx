@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {Tree} from './Tree'
-import './treestyle.css';
+import '../../style/treestyle.css';
 
 
 

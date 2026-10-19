@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { ExitDemoButton, NavItem, UserProfile } from './SidebarItems';
-import './Sidebar.css';
+import '../../style/Sidebar.css';
 import { useNavigate } from 'react-router-dom'
 
 
@@ -15,12 +15,11 @@ export function SidebarBox() {
                 <div className='logo-box'>WS</div>
                 <div className='logo-text'>
                     <h3>Wood Source</h3>
-                    <p>SUPPLIER INTELLIGENCE</p>
                 </div>
             </div>
 
              {/*MenyLista*/}
-            <div className='sidebar-section-title'>WORKSPACE</div>
+            
             <nav className='sidebar-nav'>
                 <NavItem
                     label='Home'
@@ -57,7 +56,7 @@ export function SidebarBox() {
 
             <div className='sidebar-footer'>
                 <UserProfile
-                    initials='EM'
+                    initials='J'
                     name = 'Johan'
                     role = 'Wood Sourcing Leader'
                 />
