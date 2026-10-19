@@ -1,50 +1,41 @@
 import '../style/AlertPanel.css';
 import Panel from './Panel';
-import { ShieldAlert, TriangleAlert } from 'lucide-react';
+import { NotepadText, Mail } from 'lucide-react';
 
 export default function AlertPanel() {
 
     return (
-        <Panel title="Alerts" actionText="View all →">
+        <Panel title="Audits" actionText="View all →">
             <div className='alert-container'>
-                <div className='icon' style={{ backgroundColor: '#FBE7E4' }}>
-                    <ShieldAlert size={16} color='#A33D36'></ShieldAlert>
+                <div className='icon'>
+                    <Mail size={16}></Mail>
                 </div>
                 <div className='middle-content'>
-                    <h3>Labor audit overdue</h3>
-                    <h4>Birch Bros · Norway</h4>
-                    <h5 style={{ color: '#A33D36' }}>2 days overdue</h5>
-                </div>
-                <div className='level-box' style={{ backgroundColor: '#FBE7E4' }}>
-                    <p style={{ color: '#A33D36' }}>CRITICAL</p>
+                    <h3>Routine Audit</h3>
+                    <h4>Oak-ay Inc · USA</h4>
+                    <h5>14/11/26</h5>
                 </div>
             </div>
 
             <div className='alert-container'>
-                <div className='icon' style={{ backgroundColor: '#FFF0D8' }}>
-                    <TriangleAlert size={16} color='#A45F17'></TriangleAlert>
+                <div className='icon'>
+                    <Mail size={16}></Mail>
                 </div>
                 <div className='middle-content'>
-                    <h3>Certification expires soon</h3>
-                    <h4>TerraTrunk AB ·Sweden</h4>
-                    <h5 style={{ color: '#A45F17' }}>Expires in 21 days</h5>
-                </div>
-                <div className='level-box' style={{ backgroundColor: '#FFF0D8' }}>
-                    <p style={{ color: '#A45F17' }}>REVIEW</p>
+                    <h3>Routine Audit</h3>
+                    <h4>TerraTrunk AB · Sweden</h4>
+                    <h5>21/11/26</h5>
                 </div>
             </div>
 
             <div className='alert-container'>
-                <div className='icon' style={{ backgroundColor: '#FFF0D8' }}>
-                    <TriangleAlert size={16} color='#A45F17'></TriangleAlert>
+                <div className='icon'>
+                    <NotepadText size={16}></NotepadText>
                 </div>
                 <div className='middle-content'>
-                    <h3>Carbon data anomaly</h3>
+                    <h3>On-site Inspection</h3>
                     <h4>TreeTops Inc · Canada</h4>
-                    <h5 style={{ color: '#A45F17' }}>+34% vs prior quarter</h5>
-                </div>
-                <div className='level-box' style={{ backgroundColor: '#FFF0D8' }}>
-                    <p style={{ color: '#A45F17' }}>REVIEW</p>
+                    <h5>03/12/26</h5>
                 </div>
             </div>
         </Panel>
