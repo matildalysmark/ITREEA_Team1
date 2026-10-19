@@ -1,20 +1,9 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useParams } from "react-router-dom";
-import {
-  Send,
-  Pencil,
-  Bell,
-  Star,
-  Leaf,
-  ShieldCheck,
-  Users,
-
-} from "lucide-react";
+import { Send, Pencil, Bell, Star, Leaf, ShieldCheck, Users } from "lucide-react";
 import "../style/SupplierInfoPage.css";
 
-import SupplierSidePanel from "../components/SupplierSidePanel";
 import SupplierDataTable from "../components/SupplierDataTable";
-import SupplierSummary from "../components/SupplierSummary";
 import jsonToChartData from "../Charts/JSONToChartData";
 import RegularLineChart from "../Charts/RegularLineChart";
 import RegularColumnChart from "../Charts/RegularColumnChart";
@@ -22,26 +11,25 @@ import suppliers_data from "../../data/supplier_data.json";
 import { getMonthlyAverageScores } from "../helper/scoreUtils";
 
 export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
-  // Läser ID antingen från props eller direkt från URL (/app/suppliers/:id)
   const params = useParams();
-  const activeId = propSupplierId || params.supplier_id || Object.keys(suppliers_data.suppliers)[0];
+  const suppliers = suppliers_data.suppliers || {};
+  const activeId = propSupplierId || params.supplier_id || Object.keys(suppliers)[0];
+  const data = suppliers[activeId] || {};
 
-  const data = suppliers_data.suppliers[activeId] || {};
+  // Rank calculation (memoized so it only calculates once)
+  const { rank, totalSuppliers } = useMemo(() => {
+    const list = Object.entries(suppliers)
+      .map(([id, s]) => ({ id, score: s.average_score ?? 0 }))
+      .sort((a, b) => b.score - a.score);
 
+    const idx = list.findIndex((s) => s.id === activeId);
+    return {
+      rank: idx !== -1 ? idx + 1 : "-",
+      totalSuppliers: list.length,
+    };
+  }, [suppliers, activeId]);
 
-  // Sort all suppliers by average_score descending to calculate rank
-  const supplierList = Object.entries(suppliers_data.suppliers || {})
-    .map(([id, s]) => ({
-      id,
-      score: s.average_score ?? 0,
-    }))
-    .sort((a, b) => b.score - a.score);
-
-  const totalSuppliers = supplierList.length;
-  const rankIndex = supplierList.findIndex((s) => s.id === activeId);
-  const rank = rankIndex !== -1 ? rankIndex + 1 : "-";
-
-  // Graferna
+  // Chart datasets
   const { axes, inputData } = jsonToChartData(suppliers_data, activeId, "amount");
   const { axes: carbonAxes, inputData: carbonInputData } = jsonToChartData(
     suppliers_data,
@@ -53,11 +41,13 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
     activeId,
     "responsible_sourcing"
   );
+
   const laborAxes = ["Month", "Labor standards"];
   const laborInputData = Object.keys(data.months ?? {})
     .sort()
     .map((month) => [month, data.months[month]?.labor_standards ?? null]);
-  const averageAxes = ["Month", "Average score"];
+
+  const averageAxes = ["Month", "Overall score"];
   const averageInputData = Object.entries(getMonthlyAverageScores(data))
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([month, score]) => [month, Number(score)]);
@@ -66,13 +56,11 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
     ? data.display_name.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase()
     : "TC";
 
-  // Ser om graferna faktiskt har rader att rita
   const hasChartData = Array.isArray(inputData) && inputData.length > 1;
-
 
   return (
     <div className="supplier-dashboard-container">
-      {/* Topp-header */}
+      {/* Top Header */}
       <header className="supplier-top-bar">
         <div className="header-meta-group">
           <div className="breadcrumb-nav">
@@ -85,21 +73,21 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
         </div>
 
         <div className="header-action-group">
-          <button className="btn btn-secondary">
+          <button className="btn btn-secondary" type="button">
             <Send size={15} />
             <span>Request update</span>
           </button>
-          <button className="btn btn-primary">
+          <button className="btn btn-primary" type="button">
             <Pencil size={15} />
             <span>Edit supplier</span>
           </button>
-          <button className="btn btn-icon-only" aria-label="Notifications">
+          <button className="btn btn-icon-only" type="button" aria-label="Notifications">
             <Bell size={16} />
           </button>
         </div>
       </header>
 
-      {/* Profilkort */}
+      {/* Hero Profile Card */}
       <section className="supplier-hero-card">
         <div className="hero-left-section">
           <div className="company-avatar-box">
@@ -130,10 +118,8 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
         </div>
       </section>
 
-
-      {/* 3. Summary Metrics mapped into the 4 Top Cards */}
+      {/* Summary KPI Cards */}
       <section className="kpi-metric-grid">
-        {/* Card 1: Overall Score */}
         <div className="kpi-card">
           <div className="kpi-card-header">
             <span>Overall score</span>
@@ -151,7 +137,6 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
           <div className="kpi-subtext">Overall benchmark</div>
         </div>
 
-        {/* Card 2: Carbon Footprint */}
         <div className="kpi-card">
           <div className="kpi-card-header">
             <span>Carbon footprint</span>
@@ -169,7 +154,6 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
           <div className="kpi-subtext">Verified emissions tier</div>
         </div>
 
-        {/* Card 3: Responsible Sourcing */}
         <div className="kpi-card">
           <div className="kpi-card-header">
             <span>Responsible sourcing</span>
@@ -187,7 +171,6 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
           <div className="kpi-subtext">FSC & PEFC certified ratio</div>
         </div>
 
-        {/* Card 4: Labor Standards */}
         <div className="kpi-card">
           <div className="kpi-card-header">
             <span>Labor standards</span>
@@ -206,70 +189,65 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
         </div>
       </section>
 
+      {/* Graphs Section */}
+      <section className="graphs-full-section">
+        <div className="dashboard-panel-card existing-graphs-box">
+          <h3 className="panel-title">Score over time</h3>
+          <span className="panel-caption">Multi-line & column distribution</span>
 
-      <section className="analytics-layout-grid">
-
-
-        {/* Befintliga grafer */}
-        <div className="analytics-main-slot">
-          <div className="dashboard-panel-card existing-graphs-box">
-            <h3 className="panel-title">Score over time</h3>
-            <span className="panel-caption">Multi-line & column distribution</span>
-
-            <div className="existing-graphs-content">
-              {hasChartData ? (
-                <>
-                  <RegularColumnChart
-                    axes={averageAxes}
-                    inputData={averageInputData}
-                    title="Average Score per Month"
-                    backgroundColor="white"
-                    colors={["#4767af"]}
-                    max={10}
-                  />
-                  <RegularColumnChart
-                    axes={carbonAxes}
-                    inputData={carbonInputData}
-                    title="Carbon Footprint by Wood Type"
-                    backgroundColor="white"
-                    colors={["#307236", "#4b3c2b", "#798491"]}
-                    max={10}
-                  />
-                  <RegularColumnChart
-                    axes={sourcingAxes}
-                    inputData={sourcingInputData}
-                    title="Responsible Sourcing by Wood Type"
-                    backgroundColor="white"
-                    colors={["#307236", "#4b3c2b", "#798491"]}
-                    max={10}
-                  />
-                  <RegularColumnChart
-                    axes={laborAxes}
-                    inputData={laborInputData}
-                    title="Labor Standards by Wood Type"
-                    backgroundColor="white"
-                    colors={["#4767af"]}
-                    max={10}
-                  />
-                  <RegularLineChart
-                    axes={axes}
-                    inputData={inputData}
-                    title="Amount of each Wood Type"
-                    backgroundColor="white"
-                    colors={["#307236", "#4b3c2b", "#798491"]}
-                  />
-                </>
-              ) : (
-                <p style={{ color: "#64748b", padding: "16px", textAlign: "center" }}>
-                  Ingen grafdata tillgänglig för leverantör: {activeId}
-                </p>
-              )}
-            </div>
+          <div className="existing-graphs-content">
+            {hasChartData ? (
+              <>
+                <RegularColumnChart
+                  axes={averageAxes}
+                  inputData={averageInputData}
+                  title="Overall Score per Month"
+                  backgroundColor="white"
+                  colors={["#4767af"]}
+                  max={10}
+                />
+                <RegularColumnChart
+                  axes={carbonAxes}
+                  inputData={carbonInputData}
+                  title="Carbon Footprint by Wood Type"
+                  backgroundColor="white"
+                  colors={["#307236", "#4b3c2b", "#798491"]}
+                  max={10}
+                />
+                <RegularColumnChart
+                  axes={sourcingAxes}
+                  inputData={sourcingInputData}
+                  title="Responsible Sourcing by Wood Type"
+                  backgroundColor="white"
+                  colors={["#307236", "#4b3c2b", "#798491"]}
+                  max={10}
+                />
+                <RegularColumnChart
+                  axes={laborAxes}
+                  inputData={laborInputData}
+                  title="Labor Standards per Month"
+                  backgroundColor="white"
+                  colors={["#4767af"]}
+                  max={10}
+                />
+                <RegularLineChart
+                  axes={axes}
+                  inputData={inputData}
+                  title="Amount of each Wood Type"
+                  backgroundColor="white"
+                  colors={["#307236", "#4b3c2b", "#798491"]}
+                />
+              </>
+            ) : (
+              <p style={{ color: "#64748b", padding: "16px", textAlign: "center" }}>
+                Ingen grafdata tillgänglig för leverantör: {activeId}
+              </p>
+            )}
           </div>
         </div>
       </section>
 
-
+      {/* Data Table */}
       <section className="data-table-section">
         <div className="dashboard-panel-card data-table-card">
           <h3 className="panel-title">Data</h3>
