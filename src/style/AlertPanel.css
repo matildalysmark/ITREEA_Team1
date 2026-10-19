@@ -6,7 +6,7 @@
     flex-direction: row;
     gap: 15px;
     width: 100%;
-    padding: 15px 5px 10px;
+    padding: 8px 5px 10px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.142);
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
@@ -37,24 +37,17 @@
 
 .middle-content h5{
     font-weight: 600;
+    color: #42619e;
 }
 
-.icon,
-.level-box{
+.icon{
     display: flex;
     align-items: center; 
     justify-content: center;
     flex-shrink: 0;
-}
-
-.icon{
     padding: 8px;
     border-radius: 10px;
+    color: #42619e;
 }
 
-.level-box{
-    padding: 1px 6px;
-    font-size: 10px;
-    border-radius: 14px;
-}
 

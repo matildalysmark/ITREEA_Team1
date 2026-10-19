@@ -39,7 +39,7 @@ export default function InfoPanels() {
                 </div>
             </Panel>
 
-            <Panel title="Data quality" actionText="">
+            {/*<Panel title="Data quality" actionText="">
                 <div className='sub-header'>
                     <div className='date-box' style={{border: '5px solid #42619e', borderRadius:30, width: 60, height: 60, backgroundColor: '#93abdc'}}>
                         <p style={{color: 'black', fontWeight:500}}>86%</p>
@@ -72,7 +72,7 @@ export default function InfoPanels() {
                     </div>
                     <span className='field-percentage'>96%</span>
                 </div>
-            </Panel>
+            </Panel>*/}
         </div>
     );
 }

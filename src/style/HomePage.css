@@ -1,24 +1,35 @@
-.homepage{
-    width: 100%;
+.supplier-dashboard-container {
+    padding: 8px 36px 60px 36px;
+    background-color: #f7f9fa;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #0f172a;
     box-sizing: border-box;
-    padding: 0 40px 50px;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.home-font {
+    font-size: 45px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 10px;
 }
 
 .main-part {
     display: flex;
-    gap: 30px;
+    gap: 24px;
     padding: 20px 0 50px 0;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    max-width: 1060px;
+    max-width: 100%;
     margin: 0 auto;
     box-sizing: border-box;
     overflow-x: hidden;
 }
 
-.map-panel-wrapper{
+.map-panel-wrapper {
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -36,43 +47,84 @@
     width: 100%;
     max-width: 100%;
     height: auto;
-    min-height: 400px;
-    background-color: #42619e;
-    border-radius: 12px;
-    overflow: hidden;
+    min-height: 420px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden; 
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    padding: 0;
 }
 
-.map-container > div {
+.map-header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: #ffffff;
+    flex: 0 0 auto;
+}
+
+.map-header h3{
+    font-size: 12px;
+    font-weight: 600;
+    text-align: left;
+    color: #0f172a;
+    margin: 0;
+    padding-left: 16px;
+}
+
+.header-box{
+    background-color: #42619e;
+    color: white;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    padding: 8px 14px;
+    border-top-right-radius: 8px; 
+}
+
+.map-container > div:not(.map-header) {
     flex: 1;
     width: 100%;
     height: 100%;
 }
 
-.map-panel-wrapper > .panel-container {
+.map-panel-wrapper>.panel-container,
+.map-panel-wrapper>div:not(.map-container) {
     flex: 1;
     max-width: 380px;
     min-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.map-panel-wrapper>div:not(.map-container) > * {
+    flex: 1;
+    height: 100%;
 }
 
 @media (max-width: 1100px) {
-    .homepage {
-        padding: 0 15px 30px;
+    .supplier-dashboard-container {
+        padding: 16px 18px 40px 18px;
     }
 
     .map-panel-wrapper {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
         width: 100%;
     }
 
     .map-container {
-        height: 300px;
+        height: 350px;
     }
-    
-    .map-panel-wrapper > .panel-container {
+
+    .map-panel-wrapper>.panel-container,
+    .map-panel-wrapper>div:not(.map-container) {
         max-width: 100%;
+        min-width: 0;
     }
 }
+
