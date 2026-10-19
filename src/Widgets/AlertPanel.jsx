@@ -1,41 +1,41 @@
 import '../style/AlertPanel.css';
 import Panel from './Panel';
-import { NotepadText, Mail } from 'lucide-react';
+import { CircleAlert, TriangleAlert } from 'lucide-react';
 
 export default function AlertPanel() {
 
     return (
-        <Panel title="Audits" actionText="View all →">
+        <Panel title="Suppliers at risk" actionText="View all →">
             <div className='alert-container'>
                 <div className='icon'>
-                    <Mail size={16}></Mail>
+                    <TriangleAlert size={16} style={{color: '#E0433E'}}></TriangleAlert>
                 </div>
                 <div className='middle-content'>
-                    <h3>Routine Audit</h3>
-                    <h4>Oak-ay Inc · USA</h4>
-                    <h5>14/11/26</h5>
+                    <h3>Oak-ay Inc · USA</h3>
+                    <h4>Emission increase</h4>
+                    <h5>Registered 14/08/26</h5>
                 </div>
             </div>
 
             <div className='alert-container'>
                 <div className='icon'>
-                    <Mail size={16}></Mail>
+                    <TriangleAlert size={16} style={{color: '#E0433E'}}></TriangleAlert>
                 </div>
                 <div className='middle-content'>
-                    <h3>Routine Audit</h3>
-                    <h4>TerraTrunk AB · Sweden</h4>
-                    <h5>21/11/26</h5>
+                    <h3>SapSource AB · Sweden</h3>
+                    <h4>Labor standard decrease</h4>
+                    <h5>Registered 21/08/26</h5>
                 </div>
             </div>
 
             <div className='alert-container'>
                 <div className='icon'>
-                    <NotepadText size={16}></NotepadText>
+                    <CircleAlert size={16} style={{color: '#F5BB27'}}></CircleAlert>
                 </div>
                 <div className='middle-content'>
-                    <h3>On-site Inspection</h3>
-                    <h4>TreeTops Inc · Canada</h4>
-                    <h5>03/12/26</h5>
+                    <h3>TreeTops Inc · Canada</h3>
+                    <h4>Audit missing</h4>
+                    <h5>Registered 17/10/26</h5>
                 </div>
             </div>
         </Panel>

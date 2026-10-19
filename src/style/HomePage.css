@@ -1,5 +1,5 @@
 .supplier-dashboard-container {
-    padding: 8px 36px 60px 36px;
+    padding: 1px 36px 60px 36px;
     background-color: #f7f9fa;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     color: #0f172a;
@@ -11,14 +11,14 @@
 .home-font {
     font-size: 45px;
     font-weight: 700;
-    color: #0f172a;
+    color: #42619e;
     margin-bottom: 10px;
 }
 
 .main-part {
     display: flex;
     gap: 24px;
-    padding: 20px 0 50px 0;
+    padding: 20px 0 30px 0;
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -73,17 +73,15 @@
     text-align: left;
     color: #0f172a;
     margin: 0;
-    padding-left: 16px;
+    padding-left: 2px;
 }
 
 .header-box{
-    background-color: #42619e;
-    color: white;
+    color: #42619e;
     display: flex;
     align-items: center; 
     justify-content: center;
-    padding: 8px 14px;
-    border-top-right-radius: 8px; 
+    padding: 8px 4px;
 }
 
 .map-container > div:not(.map-header) {
