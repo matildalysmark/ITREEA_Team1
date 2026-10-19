@@ -19,11 +19,10 @@ export function SidebarBox() {
             </div>
 
              {/*MenyLista*/}
-            
             <nav className='sidebar-nav'>
                 <NavItem
                     label='Home'
-                    
+                    icon={<House size={18} color='currentColor'/>}
                     isActive={activeTab == 'Home'}
                     onClick={() => {
                         navigate(`/app`)
@@ -32,7 +31,7 @@ export function SidebarBox() {
                 />
                  <NavItem
                     label='Suppliers'
-                 
+                    icon={<BookOpenText size={18} color='currentColor'/>}
                     isActive={activeTab == 'Suppliers'}
                     onClick={() => {
                         navigate(`/app/suppliers`)
@@ -41,7 +40,7 @@ export function SidebarBox() {
                 />
                  <NavItem
                     label='Compare'
-                
+                    icon={<ChartColumnStacked size={18} color='currentColor'/>}
                     isActive={activeTab == 'Compare'}
                     onClick= {() => {
                         navigate(`/app/compare`)

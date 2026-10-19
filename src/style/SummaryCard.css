@@ -8,8 +8,8 @@
     width: 200px;
     min-height: 200px;
     box-sizing: border-box; /*Makes sure size includes its panning and border*/
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.081);
-    border: 2px solid rgba(224, 223, 223, 0.29);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.081);
+    border: 1px solid rgba(224, 223, 223, 0.29);
     color: #2e2e2e;
     display: flex;
     flex-direction: column;
@@ -24,10 +24,10 @@
 }
 
 .summary-header{
-    font-size: 20px;
+    font-size: 18px;
     color: black;
-    padding-bottom: 10px;
-    margin-bottom: 18px;
+    padding-bottom: 5px;
+    font-weight: 500;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -52,6 +52,8 @@
 
 .individual-value {
     font-weight: 700;
+    font-size: 14px;
+    color: white;
 }
 
 .bar{
@@ -60,7 +62,7 @@
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; 
+    justify-content: flex-end;
     overflow: hidden;
 }
 
@@ -89,15 +91,15 @@
 }
 
 .labor-bar {
-    background-color: #F0D4CF;
+    background-color: #efe1b6;
 }
 
 .labor-bar-fill {
-    background-color: #E0433E;
+    background-color: #EDD167;
 }
 
 .labor-icon {
-    color: #E0433E;
+    color: #f2c745;
 }
 
 .bar-fill{
@@ -113,6 +115,7 @@
     padding-top: 10px;
     border-top: 1px solid #e0dfdf;
     font-family: 'Roboto', sans-serif;
+
 }
 
 .overall-score-label {
@@ -121,7 +124,7 @@
 }
 
 .overall-score-value {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
 }
 
@@ -131,11 +134,11 @@
     margin: 10px 15px 0;
     border-radius: 5px;
     overflow: hidden;
-    background-color: #F0D4CF;
+    background-color: #94afe2;
 }
 
 .overall-score-bar-fill {
     height: 100%;
     border-radius: 5px 0 0 5px;
-    background-color: #52422F;
+    background-color: #42619e;
 }

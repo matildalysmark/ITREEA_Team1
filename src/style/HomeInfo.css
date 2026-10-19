@@ -3,19 +3,19 @@
 /* transparent box to wrap and hold the cards */
 .card-wrapper{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     font-family: 'Roboto', sans-serif;
     gap: 20px;
     width: 100%;
-    flex-wrap: wrap;
+    box-sizing: border-box;
 }
 
 /* main container of each card*/
 .card-container{
     display: flex;
     flex-direction: column;
-    flex: 1 1 220px;
-    max-width: 280px;
+    flex: 1;
+    min-width: 0;
     min-height: 150px;
     padding: 20px;
     background-color: #ffffff; 
@@ -53,7 +53,7 @@
 /* large value displayed in the middle*/
 .card-value{
     margin: 18px 0 16px 0;
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 800;
     color: rgb(31, 30, 30);
 }

@@ -26,7 +26,7 @@ export default function ComparePage() {
 
     return (
         <main className="compare-page">
-            <h1>Compare suppliers</h1>
+            <h1 className="home-font">Compare suppliers</h1>
             <div className="compare-table-container">
             <table className="compare-table">
                 <thead>

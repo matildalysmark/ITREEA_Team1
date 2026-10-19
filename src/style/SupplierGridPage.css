@@ -1,43 +1,54 @@
-html:has(#home-page),
-body:has(#home-page),
-#root:has(#home-page),
-#root:has(#home-page) .app-shell,
-#root:has(#home-page) .app-content,
-#root:has(#home-page) .app-main,
-#home-page {
+html, body, #root {
     background-color: #f7f9fa;
+    margin: 0;
+    padding: 0;
+}
+.supplier-dashboard-container {
+    padding: 8px 36px 60px 36px;
+    background-color: #f7f9fa;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #0f172a;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100vh;
 }
 
-#home-page .home-font {
-    color: #000000;
+.home-font {
+    font-size: 45px;
+    font-weight: 700;
+    color: #42619e; 
+    margin-bottom: 20px;
+    text-align: center; 
+}
+
+.main-part {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1080px; 
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .top-grid-container {
     width: 100%;
-    box-sizing: border-box;
-    padding: 0 24px 24px 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-row-container {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 2px;
+    margin-bottom: 2px;
+    width: 100%;
 }
 
 .grid {
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, 200px);
-    gap: 24px;
-    align-items: start;
+    grid-template-columns: repeat(auto-fill, 200px);
+    gap: 20px;
     justify-content: center;
-}
-
-.grid > * {
     width: 100%;
-    max-width: 200px;
-}
-
-
-.filter-row-container {
-    grid-column: 1 / -1; 
-    max-width: 100%;
-    display: flex;
-    justify-content: flex-end;
 }

@@ -31,22 +31,11 @@ export default function HomeInfo() {
                 <div className='card-header-row'>
                     <h3>Average Labor Standard</h3>
                     <div className='icon-box'>
-                        <HandHeart size={18} color='#E0433E'></HandHeart>
+                        <HandHeart size={18} color='#EDD167'></HandHeart>
                     </div>
                 </div>
                 <p className='card-value'>7.9</p>
-                <p className='card-subtext' style={{ color: '#E0433E' }}>+0.2 in the last quarter</p>
-            </div>
-
-            <div className='card-container'>
-                <div className='card-header-row'>
-                    <h3>Suppliers at risk</h3>
-                    <div className='icon-box'>
-                        <TriangleAlert size={18} color='#E0433E'></TriangleAlert>
-                    </div>
-                </div>
-                <p className='card-value'>4</p>
-                <p className='card-subtext' style={{ color: '#E0433E' }}>2 require action this week</p>
+                <p className='card-subtext' style={{ color: '#EDD167' }}>+0.2 in the last quarter</p>
             </div>
         </div>
     );
