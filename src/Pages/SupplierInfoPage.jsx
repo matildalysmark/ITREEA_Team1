@@ -193,50 +193,67 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
       <section className="graphs-full-section">
         <div className="dashboard-panel-card existing-graphs-box">
           <h3 className="panel-title">Score over time</h3>
-          <span className="panel-caption">Multi-line & column distribution</span>
-
+          <hr />
           <div className="existing-graphs-content">
             {hasChartData ? (
               <>
-                <RegularColumnChart
-                  axes={averageAxes}
-                  inputData={averageInputData}
-                  title="Overall Score per Month"
-                  backgroundColor="white"
-                  colors={["#4767af"]}
-                  max={10}
-                />
-                <RegularColumnChart
-                  axes={carbonAxes}
-                  inputData={carbonInputData}
-                  title="Carbon Footprint by Wood Type"
-                  backgroundColor="white"
-                  colors={["#307236", "#4b3c2b", "#798491"]}
-                  max={10}
-                />
-                <RegularColumnChart
-                  axes={sourcingAxes}
-                  inputData={sourcingInputData}
-                  title="Responsible Sourcing by Wood Type"
-                  backgroundColor="white"
-                  colors={["#307236", "#4b3c2b", "#798491"]}
-                  max={10}
-                />
-                <RegularColumnChart
-                  axes={laborAxes}
-                  inputData={laborInputData}
-                  title="Labor Standards per Month"
-                  backgroundColor="white"
-                  colors={["#4767af"]}
-                  max={10}
-                />
-                <RegularLineChart
-                  axes={axes}
-                  inputData={inputData}
-                  title="Amount of each Wood Type"
-                  backgroundColor="white"
-                  colors={["#307236", "#4b3c2b", "#798491"]}
-                />
+                  <summary>Overall Score per Month</summary>
+                  <RegularColumnChart
+                    axes={averageAxes}
+                    inputData={averageInputData}
+                    title="Overall Score per Month"
+                    backgroundColor="white"
+                    colors={["#4767af"]}
+                    max={10}
+                    height="250px"
+                  />
+                <details className="chart-collapsible">
+                  <summary>Carbon Footprint by Wood Type</summary>
+                  <RegularColumnChart
+                    axes={carbonAxes}
+                    inputData={carbonInputData}
+                    title="Carbon Footprint by Wood Type"
+                    backgroundColor="white"
+                    colors={["#307236", "#4b3c2b", "#798491"]}
+                    max={10}
+                    height="250px"
+                  />
+                </details>
+                <details className="chart-collapsible">
+                  <summary>Responsible Sourcing by Wood Type</summary>
+                  <RegularColumnChart
+                    axes={sourcingAxes}
+                    inputData={sourcingInputData}
+                    title="Responsible Sourcing by Wood Type"
+                    backgroundColor="white"
+                    colors={["#307236", "#4b3c2b", "#798491"]}
+                    max={10}
+                    height="250px"
+                  />
+                </details>
+                <details className="chart-collapsible">
+                  <summary>Labor Standards per Month</summary>
+                  <RegularColumnChart
+                    axes={laborAxes}
+                    inputData={laborInputData}
+                    title="Labor Standards per Month"
+                    backgroundColor="white"
+                    colors={["#4767af"]}
+                    max={10}
+                    height="250px"
+                  />
+                </details>
+                <details className="chart-collapsible">
+                  <summary>Amount of each Wood Type</summary>
+                  <RegularLineChart
+                    axes={axes}
+                    inputData={inputData}
+                    title="Amount of each Wood Type"
+                    backgroundColor="white"
+                    colors={["#307236", "#4b3c2b", "#798491"]}
+                    height="250px"
+                  />
+                </details>
               </>
             ) : (
               <p style={{ color: "#64748b", padding: "16px", textAlign: "center" }}>
