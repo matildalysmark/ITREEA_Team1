@@ -14,7 +14,7 @@ export default function CustomScoreEditButton() {
                 onClick={() => setIsOpen(!isOpen)}>
 
                 <p className='button-text'>
-                    <SlidersHorizontal color='white' />
+                    <SlidersHorizontal color='white' size={14} />
                     Score Tuning
                 </p>
             </button>

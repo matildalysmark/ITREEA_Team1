@@ -33,7 +33,7 @@ export default function SortButton({ sortBy, onSortChange }) {
                 onClick={() => setIsOpen((open) => !open)}
             >
                 <span className="sort-button-text">
-                    <AlignLeft size={14} strokeWidth={3} aria-hidden="true" />
+                    <AlignLeft size={12} strokeWidth={3} aria-hidden="true" />
                     {truncateLabel(selectedOption.label)}
                 </span>
             </button>

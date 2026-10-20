@@ -63,7 +63,7 @@
     width: 45px;
     height: 45px;
     border-radius: 8px;
-    background-color: #E7F1FA;
+    border: 2px solid #42619e;
     box-sizing: border-box;
     line-height: 1;
 }
@@ -71,14 +71,14 @@
 .date-box h4 {
     margin: 0;
     font-size: 20px;
-    font-weight: 500;
-    color: #173F31;
+    font-weight: 600;
+    color: #42619e;
 }
 
 .date-box h5 {
     margin: 0;
     font-size: 12px;
-    color: #0058A3;
+    color: #42619e;
     margin-top: 1px;
 }
 

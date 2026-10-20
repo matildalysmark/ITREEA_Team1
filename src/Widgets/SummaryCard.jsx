@@ -14,7 +14,7 @@ export default function SummaryCard({ id }) {
         return <div className='summary-container'>Supplier missing</div>;
     }
 
-    const {scoreTuning, _} = useScoreTuningStore()
+    const { scoreTuning, _ } = useScoreTuningStore()
 
     return (
         <div className='summary-container' onClick={() => navigate(`/app/suppliers/${id}`)}>
@@ -26,29 +26,32 @@ export default function SummaryCard({ id }) {
 
                 {/*Carbon footprint bar*/}
                 <div className='bar-wrapper'>
-                    <span className='individual-value'>{supplier["carbon_footprint"]}</span>
                     <div className='bar carbon-bar'>
-                        <div className='bar-fill carbon-bar-fill' style={{height: `${(supplier.carbon_footprint / 10) * 100}%`}}></div>
+                        <div className='bar-fill carbon-bar-fill' style={{ height: `${(supplier.carbon_footprint / 10) * 100}%` }}>
+                            <span className='individual-value'>{supplier["carbon_footprint"]}</span>
+                        </div>
                     </div>
-                    <Atom className='carbon-icon' size={20}/>
+                    <Atom className='carbon-icon' size={20} />
                 </div>
 
                 {/*Resourcing bar*/}
                 <div className='bar-wrapper'>
-                    <span className='individual-value'>{supplier["responsible_sourcing"]}</span>
                     <div className='bar resourcing-bar'>
-                        <div className='bar-fill resourcing-bar-fill' style={{height: `${(supplier.responsible_sourcing / 10) * 100}%`}}></div>
+                        <div className='bar-fill resourcing-bar-fill' style={{ height: `${(supplier.responsible_sourcing / 10) * 100}%` }}>
+                            <span className='individual-value'>{supplier["responsible_sourcing"]}</span>
+                        </div>
                     </div>
-                    <TreePine className='resourcing-icon' size={20}/>
+                    <TreePine className='resourcing-icon' size={20} />
                 </div>
 
                 {/*Labor bar*/}
                 <div className='bar-wrapper'>
-                    <span className='individual-value'>{supplier["labor_standards"]}</span>
                     <div className='bar labor-bar'>
-                        <div className='bar-fill labor-bar-fill' style={{height: `${(supplier.labor_standards / 10) * 100}%`}}></div>
+                        <div className='bar-fill labor-bar-fill' style={{ height: `${(supplier.labor_standards / 10) * 100}%` }}>
+                            <span className='individual-value'>{supplier["labor_standards"]}</span>
+                        </div>
                     </div>
-                    <HandHeart className='labor-icon' size={20}/>
+                    <HandHeart className='labor-icon' size={20} />
                 </div>
             </div>
 
@@ -60,7 +63,7 @@ export default function SummaryCard({ id }) {
             <div className='overall-score-bar'>
                 <div
                     className='overall-score-bar-fill'
-                    style={{width: `${(getOverallScore(supplier, scoreTuning) / 10) * 100}%`}}
+                    style={{ width: `${(getOverallScore(supplier, scoreTuning) / 10) * 100}%` }}
                 ></div>
             </div>
         </div>
