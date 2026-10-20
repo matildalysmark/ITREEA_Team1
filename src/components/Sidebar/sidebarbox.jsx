@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { ExitDemoButton, NavItem, UserProfile } from './SidebarItems';
 import '../../style/Sidebar.css';
 import { useNavigate } from 'react-router-dom'
+import { House, BookOpenText, ChartColumnStacked } from 'lucide-react';
 
 
 export function SidebarBox() {
