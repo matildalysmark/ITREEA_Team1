@@ -238,7 +238,7 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
                     inputData={laborInputData}
                     title="Labor Standards per Month"
                     backgroundColor="white"
-                    colors={["#4767af"]}
+                    colors={["#edd167"]}
                     max={10}
                     height="250px"
                   />
