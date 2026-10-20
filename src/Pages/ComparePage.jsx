@@ -9,7 +9,7 @@ import RegularLineChart from "../Charts/RegularLineChart";
 import RegularColumnChart from "../Charts/RegularColumnChart";
 
 export default function ComparePage() {
-    const supplierIds = ["timberco_ab", "bich_bros_ab"];
+    const supplierIds = ["arborex_ab", "bich_bros_ab"];
     const [supplierListOpen, setSupplierListOpen] = useState(false);
     const selectedSuppliers = supplierIds.map((id) => supplierData.suppliers[id]);
 
