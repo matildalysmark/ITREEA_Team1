@@ -1,4 +1,5 @@
-import './headerIcon.css'
+
+import '../../style/headerIcon.css';
 
 function Header() {
   return (
