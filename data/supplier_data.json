@@ -1,7 +1,7 @@
 {
     "suppliers": {
-        "timberco_ab" : {
-            "display_name": "TimberCo AB",
+        "arborex_ab" : {
+            "display_name": "Arborex AB",
             "carbon_footprint": 5.3,
             "responsible_sourcing": 7.6,
             "labor_standards": 7,
@@ -238,8 +238,8 @@
                 }
             }
         },
-        "arborex_ab" : {
-            "display_name": "Arborex AB",
+        "timberco_ab" : {
+            "display_name": "TimberCo AB",
             "carbon_footprint": 5,
             "responsible_sourcing": 7,
             "labor_standards": 6.6
