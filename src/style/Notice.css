@@ -3,7 +3,7 @@
 .notice-container{
     width: 100%;
     height: fit-content;
-    background-color: #c6d8fb;
+    background-color: #fad1cb;
     border: 1px solid #e2e8f0;
     border-radius: 10px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
@@ -40,7 +40,7 @@
 }
 
 .message-container h4{
-    color: #42619e;
+    color: #c44e3b;
 }
 
 .message-container h5{

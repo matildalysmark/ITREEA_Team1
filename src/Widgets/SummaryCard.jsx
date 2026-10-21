@@ -1,6 +1,6 @@
 import '../style/SummaryCard.css';
 import data from '/data/supplier_data.json'
-import { Atom, TreePine, HandHeart } from 'lucide-react';
+import { TreePine, Leaf, Users } from 'lucide-react';
 import { useNavigate } from 'react-router-dom'
 import { useScoreTuningStore } from '../helper/store.js'
 import { getOverallScore } from "../helper/scoreUtils";
@@ -31,7 +31,7 @@ export default function SummaryCard({ id }) {
                             <span className='individual-value'>{supplier["carbon_footprint"]}</span>
                         </div>
                     </div>
-                    <Atom className='carbon-icon' size={20} />
+                    <Leaf className='carbon-icon' size={20} />
                 </div>
 
                 {/*Resourcing bar*/}
@@ -51,7 +51,7 @@ export default function SummaryCard({ id }) {
                             <span className='individual-value'>{supplier["labor_standards"]}</span>
                         </div>
                     </div>
-                    <HandHeart className='labor-icon' size={20} />
+                    <Users className='labor-icon' size={20} />
                 </div>
             </div>
 
