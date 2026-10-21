@@ -225,7 +225,7 @@
 /* KPI Grid */
 .kpi-metric-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(4, minmax(130px, 1fr)) minmax(260px, 1.8fr);
   gap: 16px;
   margin-bottom: 24px;
 }
@@ -233,10 +233,23 @@
 .kpi-card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 16px 20px;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+}
+
+.kpi-card.kpi-card-chart {
+  /* Only additions specific to the wider card */
+  overflow: hidden;
+}
+
+.kpi-card.kpi-card-chart {
+  padding: 8px 14px;      /* Reduced vertical padding to make it shorter */
+  max-height: 140px;      /* Constrain overall height */
+  overflow: hidden;
 }
 
 .kpi-card-header {
@@ -292,6 +305,7 @@
 .icon-emerald { color: #16a34a; }
 .icon-blue { color: #2563eb; }
 .icon-purple { color: #9333ea; }
+.icon-brown { color: #824723; }
 
 /* Dashboard Panel & Charts */
 .dashboard-panel-card {

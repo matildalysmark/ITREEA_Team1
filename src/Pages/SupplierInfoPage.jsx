@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { useParams } from "react-router-dom";
-import { Send, Pencil, Bell, Star, Leaf, ShieldCheck, Users } from "lucide-react";
+import { Send, Pencil, Bell, Star, Leaf, ShieldCheck, Users, Trees } from "lucide-react";
 import "../style/SupplierInfoPage.css";
 
 import SupplierDataTable from "../components/SupplierDataTable";
@@ -9,6 +9,7 @@ import RegularLineChart from "../Charts/RegularLineChart";
 import RegularColumnChart from "../Charts/RegularColumnChart";
 import suppliers_data from "../../data/supplier_data.json";
 import { getMonthlyAverageScores } from "../helper/scoreUtils";
+import SupplierCapacityBox from "../components/SupplierCapacityBox";
 
 export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
   const params = useParams();
@@ -187,6 +188,18 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
           </div>
           <div className="kpi-subtext">Audit compliance score</div>
         </div>
+
+        {/* Change the 5th card to include a specific modifier class */}
+        <div className="kpi-card kpi-card-chart">
+          <div className="kpi-card-header">
+            <span>Used Supplier capacity</span>
+            <Trees size={17} className="icon-brown" />
+          </div>
+
+          <div className="kpi-chart-content">
+            <SupplierCapacityBox usedCapacity={data?.used_capacity} />
+          </div>
+        </div>
       </section>
 
       {/* Graphs Section */}
@@ -197,16 +210,16 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
           <div className="existing-graphs-content">
             {hasChartData ? (
               <>
-                  <summary>Overall Score per Month</summary>
-                  <RegularColumnChart
-                    axes={averageAxes}
-                    inputData={averageInputData}
-                    title="Overall Score per Month"
-                    backgroundColor="white"
-                    colors={["#4767af"]}
-                    max={10}
-                    height="250px"
-                  />
+                <summary>Overall Score per Month</summary>
+                <RegularColumnChart
+                  axes={averageAxes}
+                  inputData={averageInputData}
+                  title="Overall Score per Month"
+                  backgroundColor="white"
+                  colors={["#4767af"]}
+                  max={10}
+                  height="250px"
+                />
                 <details className="chart-collapsible">
                   <summary>Carbon Footprint by Wood Type</summary>
                   <RegularColumnChart
@@ -268,7 +281,6 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
       <section className="data-table-section">
         <div className="dashboard-panel-card data-table-card">
           <h3 className="panel-title">Data</h3>
-          <span className="panel-caption">Leverantörsdata och leveranshistorik</span>
           <div className="data-component-slot">
             <SupplierDataTable data={data} />
           </div>

@@ -8,12 +8,13 @@ export default function SupplierCapacityBox({ usedCapacity }) {
 
   return (
     <div>
-      <h2>Used supplier capacity</h2>
+      
       {inputData.length > 0 ? (
         <RegularColumnChart
           axes={["Tree type", "Used capacity (%)"]}
           inputData={inputData}
-          title="Used Capacity by Tree Type"
+          title="Used Capacity by Tree Type" 
+          
           max={100}
         />
       ) : (
