@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { useParams } from "react-router-dom";
-import { Send, Pencil, Bell, Star, Leaf, ShieldCheck, Users, Trees } from "lucide-react";
+import { Send, Pencil, Bell, Star, Leaf, TreePine, Users, Trees } from "lucide-react";
 import "../style/SupplierInfoPage.css";
 
 import SupplierDataTable from "../components/SupplierDataTable";
@@ -158,7 +158,7 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
         <div className="kpi-card">
           <div className="kpi-card-header">
             <span>Responsible sourcing</span>
-            <ShieldCheck size={17} className="icon-blue" />
+            <TreePine size={17} className="icon-blue" />
           </div>
           <div className="kpi-metric-val">
             {data.responsible_sourcing ?? 7} <span className="kpi-max-val">/ 10</span>
@@ -175,7 +175,7 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
         <div className="kpi-card">
           <div className="kpi-card-header">
             <span>Labor standards</span>
-            <Users size={17} className="icon-purple" />
+            <Users size={17} className="icon-yellow" />
           </div>
           <div className="kpi-metric-val">
             {data.labor_standards ?? 6} <span className="kpi-max-val">/ 10</span>
@@ -189,7 +189,7 @@ export default function SupplierInfoPage({ supplier_id: propSupplierId }) {
           <div className="kpi-subtext">Audit compliance score</div>
         </div>
 
-        {/* Change the 5th card to include a specific modifier class */}
+      
         <div className="kpi-card kpi-card-chart">
           <div className="kpi-card-header">
             <span>Used Supplier capacity</span>

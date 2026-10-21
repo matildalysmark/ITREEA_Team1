@@ -6,20 +6,35 @@ export default function SupplierCapacityBox({ usedCapacity }) {
     Number(capacity),
   ]);
 
+  if (inputData.length === 0) {
+    return <p className="kpi-chart-empty">No capacity data</p>;
+  }
+
   return (
-    <div>
-      
-      {inputData.length > 0 ? (
-        <RegularColumnChart
-          axes={["Tree type", "Used capacity (%)"]}
-          inputData={inputData}
-          title="Used Capacity by Tree Type" 
-          
-          max={100}
-        />
-      ) : (
-        <p>No capacity data available.</p>
-      )}
+    <div className="supplier-capacity-wrapper">
+      <RegularColumnChart
+        axes={["Tree type", "Used capacity (%)"]}
+        inputData={inputData}
+        max={100}
+        height="140px"
+        legend="none"
+        options={{
+          legend: { position: "none" },
+          chartArea: {
+            left: 35,
+            top: 15,
+            width: "85%",
+            height: "65%", // Leaves room at the bottom for "pine" and "oak"
+          },
+          hAxis: {
+            textStyle: { fontSize: 11 },
+          },
+          vAxis: {
+            minValue: 0,
+            maxValue: 100,
+          },
+        }}
+      />
     </div>
   );
 }

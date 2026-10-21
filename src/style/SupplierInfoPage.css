@@ -242,15 +242,16 @@
 }
 
 .kpi-card.kpi-card-chart {
-  /* Only additions specific to the wider card */
-  overflow: hidden;
+  min-height: 180px; /* Give it enough breathing room */
+  overflow: visible;  /* Prevent clipping the bottom of the chart */
 }
 
-.kpi-card.kpi-card-chart {
-  padding: 8px 14px;      /* Reduced vertical padding to make it shorter */
-  max-height: 140px;      /* Constrain overall height */
-  overflow: hidden;
+.kpi-card-chart .kpi-chart-content,
+.supplier-capacity-wrapper {
+  width: 100%;
+  height: 140px;      
 }
+
 
 .kpi-card-header {
   display: flex;
@@ -262,7 +263,7 @@
 }
 
 .kpi-icon {
-  color: #3b5998;
+  color: #fce300;
 }
 
 .kpi-metric-val {
@@ -302,9 +303,9 @@
 
 /* KPI Accent Icons */
 .icon-amber { color: #ca8a04; }
-.icon-emerald { color: #16a34a; }
-.icon-blue { color: #2563eb; }
-.icon-purple { color: #9333ea; }
+.icon-emerald { color:#3F8D90; }
+.icon-blue { color: #307236; }
+.icon-yellow { color: #f2c745; }
 .icon-brown { color: #824723; }
 
 /* Dashboard Panel & Charts */
@@ -347,6 +348,15 @@
   flex-direction: column;
   gap: 8px;
   width: 100%;
+}
+
+
+.kpi-chart-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  height: 100%
 }
 
 .existing-graphs-content > div,

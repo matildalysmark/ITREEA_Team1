@@ -33,7 +33,10 @@ import { Chart } from "react-google-charts";
  *   backgroundColor="lightblue"
  * />
  */
-function RegularColumnChart({ axes, inputData, title, backgroundColor, colors, width, height, max }) {
+function RegularColumnChart({ axes, inputData, title, backgroundColor, colors, width, height, max,
+   showAnnotation = false, 
+  legend = "none",       
+  chartArea }) {
   // Adds an annotation column after each value series so values are always drawn on the columns.
   const isSeries = (header, j) => j > 0 && typeof header === "string";
   const header = axes.flatMap((a, j) =>
