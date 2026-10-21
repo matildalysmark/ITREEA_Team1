@@ -6,7 +6,7 @@ export default function SupplierDataTable({ data }) {
   const monthKeys = Object.keys(monthsData).sort();
 
   if (monthKeys.length === 0) {
-    return <p style={{ color: "#64748b", padding: "16px" }}>Ingen data tillgänglig.</p>;
+    return <p style={{ color: "#64748b", padding: "16px" }}>No data avalible.</p>;
   }
 
   // Pick the latest month to dynamically grab all wood types (pine, oak, birch, etc.)
@@ -18,8 +18,8 @@ export default function SupplierDataTable({ data }) {
       <table className="excel-sheet-table">
         <thead>
           <tr>
-            <th className="cell-header">Månad</th>
-            <th className="cell-header">Arbetsstandard</th>
+            <th className="cell-header">Month</th>
+            <th className="cell-header">Work labor</th>
             {woodTypes.map((wood) => (
               <React.Fragment key={wood}>
                 <th className="cell-header">{capitalizeFirstLetter(wood)} (m³)</th>
