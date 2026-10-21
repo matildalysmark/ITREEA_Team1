@@ -7,6 +7,7 @@ import { getAverageScore } from "../helper/scoreUtils";
 import supplierToCompareChartData from "../Charts/SupplierToCompareChartData";
 import RegularLineChart from "../Charts/RegularLineChart";
 import RegularColumnChart from "../Charts/RegularColumnChart";
+import SupplierCapacityBox from "../components/SupplierCapacityBox";
 
 export default function ComparePage() {
     const supplierIds = ["arborex_ab", "bich_bros_ab"];
@@ -145,6 +146,14 @@ export default function ComparePage() {
                                     height="220px"
                                     />
                                 </div>
+                            </td>
+                        ))}
+                    </tr>
+                    <tr>
+                        <th scope="row">Used supplier capacity</th>
+                        {selectedSuppliers.map((supplier) => (
+                            <td key={supplier.display_name}>
+                                <SupplierCapacityBox usedCapacity={supplier.used_capacity} />
                             </td>
                         ))}
                     </tr>
