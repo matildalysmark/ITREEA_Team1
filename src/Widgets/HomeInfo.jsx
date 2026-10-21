@@ -1,5 +1,5 @@
 import '../style/HomeInfo.css';
-import { Atom, TreePine, HandHeart, TriangleAlert } from 'lucide-react';
+import { TreePine, Leaf, Users } from 'lucide-react';
 
 export default function HomeInfo() {
     return (
@@ -9,7 +9,7 @@ export default function HomeInfo() {
                 <div className='card-header-row'>
                     <h3>Average Carbon Footprint</h3>
                     <div className='icon-box'>
-                        <Atom size={18} color='#3F8D90'></Atom>
+                        <Leaf size={18} color='#3F8D90'></Leaf>
                     </div>
                 </div>
                 <p className='card-value'>9.2</p>
@@ -31,7 +31,7 @@ export default function HomeInfo() {
                 <div className='card-header-row'>
                     <h3>Average Labor Standard</h3>
                     <div className='icon-box'>
-                        <HandHeart size={18} color='#EDD167'></HandHeart>
+                        <Users size={18} color='#EDD167'></Users>
                     </div>
                 </div>
                 <p className='card-value'>7.9</p>
