@@ -1,10 +1,12 @@
+import { Navigate, useNavigate } from 'react-router';
 import '../style/Notice.css';
 import { X } from 'lucide-react';
 
 export default function Notice() {
+    const navigate = useNavigate()
 
     return(
-        <div className='notice-container'>
+        <div className='notice-container' onClick={() => navigate(`/app/compare`)}>
             <div className='message-container'>
                 <h4>New trend detected · 10 minutes ago</h4>
                 <h3>Labor standard decrease for Arborex AB birch sourcing · Suggest switch of birch supplier to Birch Bros</h3>
