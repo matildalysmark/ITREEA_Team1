@@ -16,7 +16,7 @@ export default function ProjectInfoPage() {
             <section className="info-card">
                 <h2>What is ITREEA?</h2>
                 <p>
-                    ITREEA is a platform that maps wood suppliers, displaying their material origins, carbon footprints and capacities to make eco-conscious procurement <strong>much easier!</strong> To prevent decision deadlock caused by conflict, ITREEA aggregates complex environmental and labor data into a single, weighted sustainability index score!
+                    ITREEA is a platform that maps wood suppliers, displaying their material origins, carbon footprints and capacities to make eco-conscious procurement <strong>much easier!</strong> To prevent decision deadlock caused by conflicting metrics, ITREEA translates complex environmental and labor data into clear, actionable insights.
                 </p>
                 <button className="demo-button" type="button" onClick={() => navigate("/app")}>
                     TO DEMO
@@ -36,14 +36,13 @@ export default function ProjectInfoPage() {
             </section>
 
             <section className="info-card">
-
-                <h2>Sustainability impact</h2>
+                <h2>Sustainability</h2>
                 <p>
-                    ITREEA contributes to environmental sustainability by helping IKEA identify suppliers and wood types with high carbon footprints, unsustainable sourcing practices, or declining sustainability performance. This enables earlier interventions and more responsible material choices. Social sustainability is supported by monitoring suppliers’ labor standards, helping IKEA identify potential risks to workers and local communities.
+                    <strong>Sustainability Dimensions:</strong> Environmentally, ITREEA tracks carbon footprints and sourcing standards to enable responsible material choices. Economically, it mitigates supply chain risks by monitoring capacities, reducing the need for costly last-minute solutions. Socially, it ensures fair labor practices and transparency across the supply chain. Individually, it empowers IKEA employees with accessible data to make informed decisions and safeguards supplier employee well-being. Technically, the platform is adaptable and scalable, allowing users to customize evaluations and easily integrate new indicators like water use or digital waste in the future.
                 </p>
-
-                <h2>Evaluating sustainable impact</h2>
-                <p>TBA</p>
+                <p>
+                    <strong>Order of Effects:</strong> The platform's impact spans three levels. The first order provides an operational platform for sourcing leaders to improve daily decisions. The second order incentivizes suppliers to elevate their environmental standards to maintain beneficial partnerships with IKEA. The third order establishes a higher global standard, reshaping the universal view of sustainable forestry worldwide.
+                </p>
             </section>
 
             <section className="team-section">
