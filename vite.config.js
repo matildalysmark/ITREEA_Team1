@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
-  base: "/project-website/",
+  base: "/ITREEA_Team1/",
   server: {
     watch: {
       usePolling: true,
