@@ -1,5 +1,5 @@
-# Project website
-Website (main branch) available at: https://matildalysmark.github.io/project-website/
+# ITREEA
+Website (main branch) available at: https://matildalysmark.github.io/ITREEA_Team1/
 
 ## Prerequisites
 - Node.js
